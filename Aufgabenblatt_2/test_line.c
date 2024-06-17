@@ -37,6 +37,8 @@ int main(void) {
          //Rechts abbiegen
 		setDutyCycle(PD6, 155);
 		PORTB |= (1 << PB3);
+		//links Motor 0 setzen
+		PORTD |= ~(1 << PD7);
         }
         if (PINC & (1 << PINC1)) {
 			//MIDDLE
@@ -49,6 +51,8 @@ int main(void) {
 		//LINKS abbiegen
 		setDutyCycle(PD5, 155);
 		PORTD |= (1 << PB7);
+		// todo: rechts Motor 0 setzen
+		PORTB |= ~(1 << PB3);
         }
         
     }
