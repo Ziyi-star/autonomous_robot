@@ -16,9 +16,6 @@ void turn_right(){
 	PORTB &= ~(1 << PB3);
 	//links Motor rückwärt
 	PORTD |= (1 << PD7);
-	
-
-
 		}
 
 void drive_left(){
@@ -60,19 +57,19 @@ void drive_right(){
     PORTB &= ~(1 << PB0);
     PORTB &= ~(1 << PB1);
 	
-		// Left motors forward, starting with PWM=0% and slowly increas the duty
-		setDutyCycle(PD5, 155);
-		PORTD |= (1 << PB7);
-		// rechts Motor 0 setzen
-		PORTB &= ~(1 << PB3);
+	// Left motors forward, starting with PWM=0% and slowly increas the duty
+	setDutyCycle(PD5, 155);
+	PORTD |= (1 << PB7);
+	// rechts Motor 0 setzen
+	PORTB &= ~(1 << PB3);
 	
 	}
 
 void gerade(){
-	    // Set the duty cycles for PD5/PD6
+	// Set the duty cycles for PD5/PD6
     setDutyCycle(PD5, 155);
     setDutyCycle(PD6, 155);
-	    // Both sides stop, backword
+	// Both sides stop, backword
     PORTB &= ~(1 << PB0);
     PORTB &= ~(1 << PB1);
 
@@ -80,10 +77,9 @@ void gerade(){
 	PORTD |= (1 << PD7);
 	PORTB |= (1 << PB3);
 		}
-
-int main(void) {
-	
-    // Set Data Direction Register C [0|1|2| as input.
+		
+void init_run(){
+	// Set Data Direction Register C [0|1|2| as input.
     DDRC = ~((1<<DDC0) | (1<<DDC1) | (1<<DDC2));
     
     // Initialze U(S)ART!
@@ -108,7 +104,11 @@ int main(void) {
     // Set the duty cycles for PD5/PD6
     setDutyCycle(PD5, 155);
     setDutyCycle(PD6, 155);
+    }
 
+int main(void) {
+	init_run();
+    
     //adc zu lesen   
     USART_init(UBRR_SETTING);
 
@@ -128,21 +128,13 @@ int main(void) {
     uint16_t adcval1 = 0;
     uint16_t adcval2 = 0;
     
-   
-    
-    
-    
-
     while(1) {
         adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
         adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
         adcval2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
 
-        //sprintf(strbuff, ADCMSG, adcval0, adcval1, adcval2);
-
-        //USART_print(strbuff);
         
-               //MIDDLE
+        //MIDDLE
         if (adcval1>280) {
            gerade();
         }
