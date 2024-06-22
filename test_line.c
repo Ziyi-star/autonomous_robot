@@ -3,35 +3,21 @@
 #include "iesmotors.h"
 #include "iesadc.h"
 
-
+//leichte abbiegen
 void turn_right(){
-	    // Set the duty cycles for PD5/PD6
+	// Set the duty cycles for PD5/PD6
     setDutyCycle(PD5, 200);
     setDutyCycle(PD6, 200);
 	// links rückwärts
     PORTB &= ~(1 << PB0);
-		//Right motors BACKWARD
+	//Right motors BACKWARD
     PORTB |= (1 << PB1);
 
 	PORTB &= ~(1 << PB3);
 	//links Motor rückwärt
 	PORTD |= (1 << PD7);
 		}
-
-void drive_left(){
-	    // Set the duty cycles for PD5/PD6
-    setDutyCycle(PD5, 155);
-    setDutyCycle(PD6, 155);
-	// Both sides stop, backword
-    PORTB &= ~(1 << PB0);
-    PORTB &= ~(1 << PB1);
-    
-
-	PORTB |= (1 << PB3);
-	//links Motor 0 setzen
-	PORTD &= ~(1 << PD7);
-	}
-
+//leichte abbiegen
 void turn_left(){
 	    // Set the duty cycles for PD5/PD6
     setDutyCycle(PD5, 200);
@@ -63,6 +49,20 @@ void drive_right(){
 	// rechts Motor 0 setzen
 	PORTB &= ~(1 << PB3);
 	
+	}
+	
+void drive_left(){
+	    // Set the duty cycles for PD5/PD6
+    setDutyCycle(PD5, 155);
+    setDutyCycle(PD6, 155);
+	// Both sides stop, backword
+    PORTB &= ~(1 << PB0);
+    PORTB &= ~(1 << PB1);
+    
+
+	PORTB |= (1 << PB3);
+	//links Motor 0 setzen
+	PORTD &= ~(1 << PD7);
 	}
 
 void gerade(){
