@@ -1,6 +1,3 @@
-Um die Anforderungen in deinem Code zu implementieren, müssen einige zusätzliche Funktionen und Zustände hinzugefügt werden. Hier ist der angepasste Code, der die beschriebenen Anforderungen berücksichtigt:
-
-```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -234,4 +231,27 @@ int main(void) {
         } else if (!left && !middle && right) {
             drive_right();
             start = 0;
-       
+        } else if (!left && middle && right) {
+            turn_right();
+            start = 0;
+        } else if (left && !middle && !right) {
+            drive_left();
+            start = 0;
+        } else if (left && !middle && right) {
+            // TODO
+        } else if (left && middle && !right) {
+            turn_left();
+            start = 0;
+        } else if (left && middle && right) {
+            // If threshold reached, stop the robot
+            if (!start) {
+                start = m_second;
+            }
+            if (m_second - start > 100) {
+                stop();
+                break;
+            }
+        }
+    }
+    return 0;
+}

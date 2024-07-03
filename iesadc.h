@@ -12,6 +12,9 @@
 #define IR_ADC1 PC1
 #define IP_ADC1 PC1
 
+#include <avr/io.h>
+#include <stdio.h>
+
 #define DR_ADC2 DDRC
 #define DP_ADC2 DDC2
 #define IR_ADC2 PC2
