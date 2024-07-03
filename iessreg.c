@@ -1,237 +1,165 @@
-Um die Anforderungen in deinem Code zu implementieren, müssen einige zusätzliche Funktionen und Zustände hinzugefügt werden. Hier ist der angepasste Code, der die beschriebenen Anforderungen berücksichtigt:
-
-```c
 #include <avr/io.h>
-#include <avr/interrupt.h>
 #include <util/delay.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include "iesusart.h"
-#include "iesadc.h"
-#include "iesmotors.h"
 
-// Makros für Pins
-#define PIN_IN1_FORWARD_LEFT PD7
-#define PIN_IN2_BACKWARD_LEFT PB0
-#define PIN_IN3_BACKWARD_RIGHT PB1
-#define PIN_IN4_FORWARD_RIGHT PB3
+// Robot function/peripheral RIGHT LF.
+#define DR_LF_R DDRC
+#define DP_LF_R DDC0
+#define IR_LF_R PINC
+#define IP_LF_R PINC0
 
-#define LED_PORT PORTB
-#define LED_DDR DDRB
-#define LED_PIN PB5
+// Robot function/peripheral MIDDLE LF.
+#define DR_LF_M DDRC
+#define DP_LF_M DDC1
+#define IR_LF_M PINC
+#define IP_LF_M PINC1
 
-uint16_t cnt = 0;
-uint16_t m_second = 0;
-uint8_t is_on_start_field = 0;
-volatile uint8_t command_received = 0;
-volatile uint8_t mode = 0; // 0 = Idle, 1 = Driving, 2 = Paused, 3 = Turning
+// Robot function/peripheral LEFT LF.
+#define DR_LF_L DDRC
+#define DP_LF_L DDC2
+#define IR_LF_L PINC
+#define IP_LF_L PINC2
 
-ISR(TIMER1_COMPA_vect) {
-    cnt += 1;
-    if (cnt == 625) {
-        cnt = 0;
-        m_second += 1;
-    }
+// Robot funktion/peripheral SR
+#define REGWIDTH 3
+
+// SR clock
+#define DR_SR_CLK  DDRD
+#define DP_SR_CLK  DDD4
+#define OR_SR_CLK  PORTD
+#define OP_SR_CLK  PORTD4
+
+// SR data
+#define DR_SR_DATA DDRB
+#define DP_SR_DATA DDB2
+#define OR_SR_DATA PORTB
+#define OP_SR_DATA PORTB2
+
+#define SR_LED_YELLOW 2
+#define SR_LED_GREEN  1
+#define SR_LED_BLUE   0
+
+typedef unsigned char srr_t;
+typedef unsigned char cntv8_t;
+
+/**
+  Clocks the real hardware -- whenever this is called,
+  a rising edge on PD4 is generated.
+*/
+void clk() {
+    OR_SR_CLK &= ~(1 << OP_SR_CLK);
+    OR_SR_CLK |= (1 << OP_SR_CLK);
+    // There may be dragons in here. How long has a
+    // clock pulse to be high? How do you know?
+    OR_SR_CLK &= ~(1 << OP_SR_CLK);
 }
 
-ISR(USART_RX_vect) {
-    char received = UDR0;
-    if (received == 'S' || received == 'P' || received == 'T' || received == 'H' || received == 'E') {
-        command_received = received;
-    }
-}
-
-void setup_heartbeat_timer() {
-    cli();                   // Interrupts deaktivieren
-    TCCR1B |= (1 << CS10);   // Prescaler: 1 => 16E6 ticks/second
-    TCCR1B |= (1 << WGM12);  // Timer 1 im CTC-Modus verwenden
-    TIMSK1 |= (1 << OCIE1A); // Compare-Match-Interrupt für OCR1A aktivieren
-    OCR1A = 255;             // Jeder 16E6/256 Ticks wird COMPA_vect ausgelöst
-    sei();                   // Interrupts aktivieren
-}
-
-void setup_led() {
-    LED_DDR |= (1 << LED_PIN); // Set LED pin as output
-}
-
-void toggle_led() {
-    LED_PORT ^= (1 << LED_PIN); // Toggle LED state
-}
-
-// Leichte Abbiegen nach rechts
-void turn_right() {
-    setDutyCycle(PD5, 255); // links
-    setDutyCycle(PD6, 180); // rechts
-    PORTD |= (1 << PIN_IN1_FORWARD_LEFT); 
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB |= (1 << PIN_IN3_BACKWARD_RIGHT);
-    PORTB &= ~(1 << PIN_IN4_FORWARD_RIGHT);
-}
-
-// Große Abbiegen nach links
-void turn_left() {
-    setDutyCycle(PD5, 180); // links
-    setDutyCycle(PD6, 255); // rechts
-    PORTD &= ~(1 << PIN_IN1_FORWARD_LEFT);
-    PORTB |= (1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
-    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
-}
-
-// Leichte Abbiegen nach links
-void drive_left() {
-    setDutyCycle(PD5, 155); // links
-    setDutyCycle(PD6, 255); // rechts
-    PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
-    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
-}
-
-// Leichte Abbiegen nach rechts
-void drive_right() {
-    setDutyCycle(PD5, 255); // links
-    setDutyCycle(PD6, 155); // rechts
-    PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
-    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
-}
-
-void gerade() {
-    setDutyCycle(PD5, 155);
-    setDutyCycle(PD6, 155);
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
-    PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
-}
-
-void stop() {
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
-    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
-    PORTD &= ~(1 << PIN_IN1_FORWARD_LEFT);
-    PORTB &= ~(1 << PIN_IN4_FORWARD_RIGHT);
-}
-
-void init_run() {
-    DDRC = ~((1 << DDC0) | (1 << DDC1) | (1 << DDC2));
-    USART_init(UBRR_SETTING);
-    DDRD = 0;
-    DDRB = 0;
-    DDRD = (1 << DD5) | (1 << DD6);
-    DDRD |= (1 << PIN_IN1_FORWARD_LEFT);
-    setupTimer0();
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3);
-    setDutyCycle(PD5, 155);
-    setDutyCycle(PD6, 155);
-    setup_led();
-    USART_enable_interrupt();
-}
-
-void handle_start_field_detection() {
-    if (is_on_start_field) {
-        if (m_second % 2 == 0) {
-            toggle_led();
-            USART_transmitString("Same story, different student ... boring, IES needs to refactor this course.\n\n");
-        }
-    } else {
-        if (m_second % 1 == 0) {
-            toggle_led();
-            USART_transmitString("Hey you, you know what to do. :-)\n\n");
-        }
-    }
-}
-
-void handle_command(char command) {
-    if (command == 'S' && mode == 0) {
-        // Start driving
-        mode = 1;
-        gerade();
-        USART_transmitString("Here I am once more, going down the only round I’ve ever known...\n\n");
-    } else if (command == 'P' && (mode == 1 || mode == 2)) {
-        // Pause or unpause
-        if (mode == 1) {
-            mode = 2;
-            stop();
-            USART_transmitString("Paused ... zzzZZZzzzZZZzzz ... P again to unpause me.\n\n");
+/**
+  Writes the in-memory-representation (the "model") of
+  the robot's shift-register to the real hardware.
+*/
+void update_hardware(srr_t *regmdl) {
+    for(cntv8_t i = 0; i < REGWIDTH; i++) {
+        unsigned char position_set = (*regmdl & (1 << i));
+        if (position_set) {
+           OR_SR_DATA |= (1 << OP_SR_DATA);
+           switch (position_set) {
+              case (1 << SR_LED_BLUE):
+                 USART_print("LEFT LED SET/LD FIRES!\n\n");
+                 break;
+              case (1 << SR_LED_GREEN):
+                 USART_print("MIDDLE LED SET/LF FIRES!\n\n");
+                 break;
+              case (1 << SR_LED_YELLOW):
+                 USART_print("RIGHT LED SET/LF FIRES!\n\n");
+                 break;
+              default:
+                 USART_print("NO OR MULTIPLE LFs FIRE!\n\n");
+           }
         } else {
-            mode = 1;
-            gerade();
-            USART_transmitString("Unpaused ... let's go!\n\n");
+           OR_SR_DATA &= ~(1 << OP_SR_DATA);
         }
-    } else if (command == 'T' && (mode == 1 || mode == 2)) {
-        // Turn in clockwise direction
-        mode = 3;
-        turn_right();
-        USART_transmitString("Lalalala!\n\n");
-    } else if (command == 'H' && mode == 3) {
-        // Stop turning
-        mode = 1;
-        stop();
-        USART_transmitString("Stop turning ... back to track!\n\n");
-    } else if (command == 'E' && mode == 0) {
-        // Extended mode
-        mode = 4;
-        USART_transmitString("Extended mode activated.\n\n");
+        clk();
     }
-    command_received = 0; // Reset command
+}
+
+/**
+  Updates the model (memory), that represents the
+  robot's shift-register.
+*/
+void update_model(srr_t *regmdl) {
+
+    if (IR_LF_R & (1 << IP_LF_R)) {
+        *regmdl |= (1 << SR_LED_YELLOW);
+    } else {
+        *regmdl &= ~(1 << SR_LED_YELLOW);
+    }
+
+    if (IR_LF_M & (1 << IP_LF_M)) {
+        *regmdl |= (1 << SR_LED_GREEN);
+    } else {
+        *regmdl &= ~(1 << SR_LED_GREEN);
+    }
+
+    if (IR_LF_L & (1 << IP_LF_L)) {
+        *regmdl |= (1 << SR_LED_BLUE);
+    } else {
+        *regmdl &= ~(1 << SR_LED_BLUE);
+    }
+
+}
+
+/**
+  Clears the in-memory-representation (the "model") of
+  the robot's shift-register.
+*/
+void clear(srr_t *regmdl) {
+    *regmdl = 0;
+    update_hardware(regmdl);
+}
+
+/**
+  Sets data directions.
+*/
+void setup_ddr_all() {
+    // Set Data Direction Register B2 as output.
+    DR_SR_DATA = 1 << DP_SR_DATA;
+
+    // Set Data Direction Register D4 as output. To D4,
+    // the CLK-line of the robot's shift-register is connected.
+    DR_SR_CLK = 1 << DP_SR_CLK;
+
+    // Set Data Direction Register C[0|1|2] as input. To these pins,
+    // the robot's line-infrared-reflection-sensors are attached.
+    DR_LF_L &= ~(1 << DP_LF_L);
+    DR_LF_M &= ~(1 << DP_LF_R);
+    DR_LF_M &= ~(1 << DP_LF_M);
 }
 
 int main(void) {
-    setup_heartbeat_timer();
-    int start = 0;
+    // Setup everything
+    setup_ddr_all();
+    USART_init(UBRR_SETTING);
 
-    init_run();
+    // Allocate 1 byte in memory/on heap for a representation (model)
+    // of the register and clear the contents directly, and update
+    // everything accordingly.
+    srr_t *regmdl = malloc(sizeof(srr_t));
+    clear(regmdl);
 
-    DR_ADC0 &= ~(1 << DP_ADC0);
-    DR_ADC1 &= ~(1 << DP_ADC1);
-    DR_ADC2 &= ~(1 << DP_ADC2);
-
-    ADC_init();
-
-    unsigned char strbuff[sizeof(ADCMSG) + 15];
-
-    uint16_t adcval0 = 0;
-    uint16_t adcval1 = 0;
-    uint16_t adcval2 = 0;
+    srr_t last_model_state = *regmdl;
 
     while (1) {
-        adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
-        adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
-        adcval2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
 
-        int left = (adcval2 > 350);
-        int right = (adcval0 > 300);
-        int middle = (adcval1 > 200);
+        update_model(regmdl);
 
-        // Check if the robot is on the start field
-        is_on_start_field = (adcval0 < 200 && adcval1 < 200 && adcval2 < 200);
-
-        if (mode == 0) { // Idle mode
-            handle_start_field_detection();
-        } else if (mode == 1) { // Driving mode
-            // Implement driving logic here
-        } else if (mode == 2) { // Paused mode
-            if (m_second % 2 == 0) {
-                toggle_led();
-            }
-        } else if (mode == 3) { // Turning mode
-            if (m_second % 1 == 0) {
-                USART_transmitString("Lalalala!\n\n");
-            }
+        if (*regmdl != last_model_state) {
+           update_hardware(regmdl);
+           last_model_state = *regmdl;
         }
 
-        if (command_received) {
-            handle_command(command_received);
-        }
+    }
 
-        // Line following logic
-        if (!left && middle && !right) {
-            gerade();
-            start = 0;
-        } else if (!left && !middle && !right) {
-            // TODO
-        } else if (!left && !middle && right) {
-            drive_right();
-            start = 0;
-       
+    return 0;
+}
