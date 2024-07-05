@@ -1,35 +1,12 @@
-#include "test_main.h"
+#include "main.h"
+#include "clk.h"
+#include "led.h"
+#include "track.h"
 
 
 uint16_t cnt = 0;
 uint16_t m_second = 0;
 uint16_t ride = 0;
-
-ISR(TIMER1_COMPA_vect) {
-  cnt+=1;
-  if (cnt == 625) {
-	cnt = 0;
-	m_second+=1;
-  }
-}
-
-void setup_heartbeat_timer() {
-  cli();                   // Disable interrupts!
-  TCCR1B |= (1 << CS10);   // Prescaler: 1 => 16E6 ticks/second
-  TCCR1B |= (1 << WGM12);  // Use Timer 1 in CTC-mode
-  TIMSK1 |= (1 << OCIE1A); // Enable compare-match-interrupt for OCR1A
-  OCR1A = 255;             // Every 16E6/256 ticks COMPA_vect is fired.
-                           // This equals an (non-existent) 512-clock-
-                           // divisor. We need this information for
-                           // later calculations.
-                           // BTW: Keep in mind that there is one more
-                           // OCR-register for timer 1, which you can
-                           // use to do some more neat stuff.
-                           // BTW^2: Remember that OCR1[A|B] are 16 bit!
-  sei();                   // Enable interrupts!
-}
-
-
 
 
 int main(void){
@@ -53,7 +30,7 @@ int main(void){
     uint16_t adcval1 = 0;
     uint16_t adcval2 = 0;
     
-        // Setup everything
+    // Setup everything
     setup_ddr_all();
     USART_init(UBRR_SETTING);
 
@@ -75,8 +52,7 @@ int main(void){
         
 
     while (1) {
-   
-		
+ 
         adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
         adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
         adcval2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
@@ -96,29 +72,7 @@ int main(void){
         if (message == 'S’){
         //TODO: alle Fahrlogik
         
-        
-			
-			if (message == 'P'){
-				//TODO: 1. tes mal stop, Ampel blicken, Sachen ausgeben
-				
-				// TODO: 2.tes mal, break, draußen gehen
-				}
-			
-			if (message == 'T'){
-				//TODO: Urzeigesinn drehen, Sachen ausgeben
-				
-				if (message == 'H'){
-					//TODO: break, in die ursprüngliche RIchtung
-
-					
-					}
-				}
-			
-			}
-			
-		
-        
-        if (!left && middle && !right) {
+			  if (!left && middle && !right) {
            gerade();
            start = 0;
         }
@@ -176,6 +130,30 @@ int main(void){
 				}
 			}
         
+        
+        
+			
+			if (message == 'P'){
+				//TODO: 1. tes mal stop, Ampel blicken, Sachen ausgeben
+				
+				// TODO: 2.tes mal, break, draußen gehen
+				}
+			
+			if (message == 'T'){
+				//TODO: Urzeigesinn drehen, Sachen ausgeben
+				
+				if (message == 'H'){
+					//TODO: break, in die ursprüngliche RIchtung
+
+					
+					}
+				}
+			
+			}
+			
+		
+        
+      
 
     }
     return 0;

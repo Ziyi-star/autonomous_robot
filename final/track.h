@@ -1,3 +1,7 @@
+#ifndef TRACK_h
+#define TRACK_h
+
+
 #include <avr/io.h>
 #include "iesusart.h"
 #include "iesmotors.h"
@@ -17,3 +21,6 @@ void drive_right();
 void drive_left();
 void gerade();
 void init_run();
+
+#endif
+

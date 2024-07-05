@@ -1,4 +1,4 @@
-#include "test_led.h"
+#include "led.h"
 
 /**
   Clocks the real hardware -- whenever this is called,
@@ -82,4 +82,24 @@ void setup_ddr_all() {
     DR_LF_M &= ~(1 << DP_LF_M);
 }
 
+
+/**
+  Function to run LED sequence like a running light.
+*/
+void run_led_sequence(srr_t *regmdl, int delay_ms) {
+    // Running light loop
+    for (int i = 0; i < REGWIDTH; i++) {
+        // Set the corresponding bit in the model
+        *regmdl = 1 << i;
+
+        // Update the hardware
+        update_hardware(regmdl);
+
+        // Wait for the specified time
+        _delay_ms(delay_ms);
+    }
+
+    // Clear the model after the sequence is done
+    clear(regmdl);
+}
 

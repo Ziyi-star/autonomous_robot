@@ -1,6 +1,5 @@
-
-#ifndef IESSREG_h
-#define IESSREG_h
+#ifndef LED_h
+#define LED_h
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -47,31 +46,17 @@
 typedef unsigned char srr_t;
 typedef unsigned char cntv8_t;
 
-/**
-  Clocks the real hardware -- whenever this is called,
-  a rising edge on PD4 is generated.
-*/
+
 void clk();
-/**
-  Writes the in-memory-representation (the "model") of
-  the robot's shift-register to the real hardware.
-*/
+
 void update_hardware(srr_t *regmdl);
-/**
-  Updates the model (memory), that represents the
-  robot's shift-register.
-*/
+
 void update_model(srr_t *regmdl, int left, int middle, int right);
 
-/**
-  Clears the in-memory-representation (the "model") of
-  the robot's shift-register.
-*/
 void clear(srr_t *regmdl);
 
-/**
-  Sets data directions.
-*/
 void setup_ddr_all();
+
+void run_led_sequence(srr_t *regmdl, int delay_ms) ;
 
 #endif
