@@ -1,0 +1,4 @@
+<map id="multiply_matrices" name="multiply_matrices">
+<area shape="rect" id="node1" title="This functions computes the product of two given input matrices." alt="" coords="5,5,129,32"/>
+<area shape="rect" id="node2" href="$math__library_8c.html#a0a7f25e06a8c375fa8ad4172fa0df204" title="Allocates and creates a matrix with given input dimensions." alt="" coords="177,5,279,32"/>
+</map>

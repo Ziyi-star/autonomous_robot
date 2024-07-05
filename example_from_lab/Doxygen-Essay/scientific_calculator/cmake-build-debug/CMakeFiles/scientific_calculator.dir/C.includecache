@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/marek/Projects/Doxygen-Essay/scientific_calculator/calculator.c
+math_library.h
+/home/marek/Projects/Doxygen-Essay/scientific_calculator/math_library.h
+stdio.h
+-
+math.h
+-
+stdlib.h
+-
+
+/home/marek/Projects/Doxygen-Essay/scientific_calculator/math_library.h
+
