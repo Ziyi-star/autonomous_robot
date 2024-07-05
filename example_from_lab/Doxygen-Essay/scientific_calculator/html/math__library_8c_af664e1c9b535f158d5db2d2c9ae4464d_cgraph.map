@@ -1,0 +1,4 @@
+<map id="transpose_matrix" name="transpose_matrix">
+<area shape="rect" id="node1" title="This functions transposes a given input matrix." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$math__library_8c.html#a0a7f25e06a8c375fa8ad4172fa0df204" title="Allocates and creates a matrix with given input dimensions." alt="" coords="176,5,277,32"/>
+</map>

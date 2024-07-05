@@ -1,0 +1,314 @@
+\hypertarget{math__library_8h}{}\doxysection{math\+\_\+library.\+h File Reference}
+\label{math__library_8h}\index{math\_library.h@{math\_library.h}}
+
+
+Mathematical functions for scientific computing.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{math__library_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structComplex}{Complex}}
+\begin{DoxyCompactList}\small\item\em Struct representing a complex number consisting of a real and an imaginary number. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}}
+\begin{DoxyCompactList}\small\item\em Struct representing a two dimensional matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}} \mbox{\hyperlink{math__library_8h_a0a7f25e06a8c375fa8ad4172fa0df204}{create\+\_\+matrix}} (int n\+\_\+rows, int n\+\_\+columns)
+\begin{DoxyCompactList}\small\item\em Allocates and creates a matrix with given input dimensions. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}} \mbox{\hyperlink{math__library_8h_a8d0bb4c5ca07827f450983ca8692c461}{read\+\_\+matrix}} ()
+\begin{DoxyCompactList}\small\item\em Reads in a matrix entered by the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{math__library_8h_af6334ac0ab1be965d0c9165902e1fc09}{print\+\_\+matrix}} (struct \mbox{\hyperlink{structMatrix}{Matrix}} m)
+\begin{DoxyCompactList}\small\item\em Prints input matrix. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}} \mbox{\hyperlink{math__library_8h_af664e1c9b535f158d5db2d2c9ae4464d}{transpose\+\_\+matrix}} (struct \mbox{\hyperlink{structMatrix}{Matrix}} m)
+\begin{DoxyCompactList}\small\item\em This functions transposes a given input matrix. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}} \mbox{\hyperlink{math__library_8h_a91fc23df05efbc68f4c32a5eba6ed87e}{add\+\_\+matrices}} (struct \mbox{\hyperlink{structMatrix}{Matrix}} m\+\_\+1, struct \mbox{\hyperlink{structMatrix}{Matrix}} m\+\_\+2)
+\begin{DoxyCompactList}\small\item\em This functions adds two given input matrices. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMatrix}{Matrix}} \mbox{\hyperlink{math__library_8h_a7cb5a9b60ac1172db9962871b1801105}{multiply\+\_\+matrices}} (struct \mbox{\hyperlink{structMatrix}{Matrix}} m\+\_\+1, struct \mbox{\hyperlink{structMatrix}{Matrix}} m\+\_\+2)
+\begin{DoxyCompactList}\small\item\em This functions computes the product of two given input matrices. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{math__library_8h_af1c216d948c82051de0eede84b1cffe9}{poly\+\_\+discriminant}} (float a, float b, float c)
+\begin{DoxyCompactList}\small\item\em Computes the discriminant of a polynomial function of degree two. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{math__library_8h_ae1b37c26bb8e5744f5747d6cd6505356}{factorial}} (int n)
+\begin{DoxyCompactList}\small\item\em Computes the factorial of a positive integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mathematical functions for scientific computing. 
+
+\begin{DoxyAuthor}{Author}
+Marek Herde 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23.\+05.\+2019
+\end{DoxyDate}
+This library contains several mathematical functions and a list of them is given below.
+
+
+\begin{DoxyItemize}
+\item Transpose matrix.
+\item Add two matrices.
+\item Multiply two matrices.
+\item Compute roots of quadratic polynomial.
+\item Compute factorial. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{math__library_8h_a91fc23df05efbc68f4c32a5eba6ed87e}\label{math__library_8h_a91fc23df05efbc68f4c32a5eba6ed87e}} 
+\index{math\_library.h@{math\_library.h}!add\_matrices@{add\_matrices}}
+\index{add\_matrices@{add\_matrices}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{add\_matrices()}{add\_matrices()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMatrix}{Matrix}} add\+\_\+matrices (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m\+\_\+1,  }\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m\+\_\+2 }\end{DoxyParamCaption})}
+
+
+
+This functions adds two given input matrices. 
+
+Denoting the matrix by resulting matrix by $M$ and the input matrices by $X$ and $Y$, the addition is described by $M = X \cdot Y$.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+1} & first matrix \\
+\hline
+{\em m\+\_\+2} & second matrix\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sum of the matrices \textquotesingle{}m\+\_\+1\textquotesingle{} and \textquotesingle{}m\+\_\+2\textquotesingle{} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{math__library_8h_a91fc23df05efbc68f4c32a5eba6ed87e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{math__library_8h_a91fc23df05efbc68f4c32a5eba6ed87e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_a0a7f25e06a8c375fa8ad4172fa0df204}\label{math__library_8h_a0a7f25e06a8c375fa8ad4172fa0df204}} 
+\index{math\_library.h@{math\_library.h}!create\_matrix@{create\_matrix}}
+\index{create\_matrix@{create\_matrix}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{create\_matrix()}{create\_matrix()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMatrix}{Matrix}} create\+\_\+matrix (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+rows,  }\item[{int}]{n\+\_\+columns }\end{DoxyParamCaption})}
+
+
+
+Allocates and creates a matrix with given input dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+rows} & number of rows \\
+\hline
+{\em n\+\_\+columns} & number of columns\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+created matrix 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{math__library_8h_a0a7f25e06a8c375fa8ad4172fa0df204_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_ae1b37c26bb8e5744f5747d6cd6505356}\label{math__library_8h_ae1b37c26bb8e5744f5747d6cd6505356}} 
+\index{math\_library.h@{math\_library.h}!factorial@{factorial}}
+\index{factorial@{factorial}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily int factorial (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Computes the factorial of a positive integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & being a positive integer whose factorial is to be computed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+factorial of the parameter
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://en.wikipedia.org/wiki/Factorial}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Factorial}} (last access\+: 23.\+05.\+2019) 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{math__library_8h_ae1b37c26bb8e5744f5747d6cd6505356_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{math__library_8h_ae1b37c26bb8e5744f5747d6cd6505356_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_a7cb5a9b60ac1172db9962871b1801105}\label{math__library_8h_a7cb5a9b60ac1172db9962871b1801105}} 
+\index{math\_library.h@{math\_library.h}!multiply\_matrices@{multiply\_matrices}}
+\index{multiply\_matrices@{multiply\_matrices}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{multiply\_matrices()}{multiply\_matrices()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMatrix}{Matrix}} multiply\+\_\+matrices (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m\+\_\+1,  }\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m\+\_\+2 }\end{DoxyParamCaption})}
+
+
+
+This functions computes the product of two given input matrices. 
+
+Denoting the product matrix by $M \in \mathbb{R}^{n \times m}$ and the input matrices by $X \in \mathbb{R}^{n \times t}$ and $Y \in \mathbb{R}^{t \times m}$, the product is described by $M = X \cdot Y$.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+1} & first matrix \\
+\hline
+{\em m\+\_\+2} & second matrix\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+product of the matrices \textquotesingle{}m\+\_\+1\textquotesingle{} and \textquotesingle{}m\+\_\+2\textquotesingle{} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{math__library_8h_a7cb5a9b60ac1172db9962871b1801105_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{math__library_8h_a7cb5a9b60ac1172db9962871b1801105_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_af1c216d948c82051de0eede84b1cffe9}\label{math__library_8h_af1c216d948c82051de0eede84b1cffe9}} 
+\index{math\_library.h@{math\_library.h}!poly\_discriminant@{poly\_discriminant}}
+\index{poly\_discriminant@{poly\_discriminant}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{poly\_discriminant()}{poly\_discriminant()}}
+{\footnotesize\ttfamily float poly\+\_\+discriminant (\begin{DoxyParamCaption}\item[{float}]{a,  }\item[{float}]{b,  }\item[{float}]{c }\end{DoxyParamCaption})}
+
+
+
+Computes the discriminant of a polynomial function of degree two. 
+
+A polynomial function of degree two is defined by $f(x) = ax^2 + bx + c$. The corresponding discriminant is given by $b^2 - 4ac$.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & coefficient of polynomial of second order \\
+\hline
+{\em b} & coefficient of polynomial of first order \\
+\hline
+{\em c} & coefficient of polynomial of zeroth order\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+discriminant of polynomial function
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://en.wikipedia.org/wiki/Discriminant}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Discriminant}} 
+\end{DoxySeeAlso}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{math__library_8h_af1c216d948c82051de0eede84b1cffe9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_af6334ac0ab1be965d0c9165902e1fc09}\label{math__library_8h_af6334ac0ab1be965d0c9165902e1fc09}} 
+\index{math\_library.h@{math\_library.h}!print\_matrix@{print\_matrix}}
+\index{print\_matrix@{print\_matrix}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{print\_matrix()}{print\_matrix()}}
+{\footnotesize\ttfamily void print\+\_\+matrix (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m }\end{DoxyParamCaption})}
+
+
+
+Prints input matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & matrix to be printed \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{math__library_8h_af6334ac0ab1be965d0c9165902e1fc09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_a8d0bb4c5ca07827f450983ca8692c461}\label{math__library_8h_a8d0bb4c5ca07827f450983ca8692c461}} 
+\index{math\_library.h@{math\_library.h}!read\_matrix@{read\_matrix}}
+\index{read\_matrix@{read\_matrix}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{read\_matrix()}{read\_matrix()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMatrix}{Matrix}} read\+\_\+matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads in a matrix entered by the user. 
+
+\begin{DoxyReturn}{Returns}
+entered matrix 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{math__library_8h_a8d0bb4c5ca07827f450983ca8692c461_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{math__library_8h_a8d0bb4c5ca07827f450983ca8692c461_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{math__library_8h_af664e1c9b535f158d5db2d2c9ae4464d}\label{math__library_8h_af664e1c9b535f158d5db2d2c9ae4464d}} 
+\index{math\_library.h@{math\_library.h}!transpose\_matrix@{transpose\_matrix}}
+\index{transpose\_matrix@{transpose\_matrix}!math\_library.h@{math\_library.h}}
+\doxysubsubsection{\texorpdfstring{transpose\_matrix()}{transpose\_matrix()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMatrix}{Matrix}} transpose\+\_\+matrix (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structMatrix}{Matrix}}}]{m }\end{DoxyParamCaption})}
+
+
+
+This functions transposes a given input matrix. 
+
+Denoting the input matrix by $M$, the transpose $M^T$ is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & matrix to be transposed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+transposed matrix 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{math__library_8h_af664e1c9b535f158d5db2d2c9ae4464d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{math__library_8h_af664e1c9b535f158d5db2d2c9ae4464d_icgraph}
+\end{center}
+\end{figure}
