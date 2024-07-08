@@ -64,6 +64,7 @@ void pause_print(const char* message, int delayTime) {
 }
 
 int main(void) {
+	
     setup_heartbeat_timer();
     int start = 0;
     int ride = 0;
@@ -139,11 +140,13 @@ int main(void) {
             }
 
             if (message == 'T') {
+				//todo: merken adc here 
+				
                 // rotate clockwise, output something
                 rotate_clockwise();
                 pause_print("Lalalala!\n", 500);
                 if (message == 'H') {
-					//todo: merken adc; find the right adc, keep rotate until we find our right adc, finally stop
+					//todo: find the right adc, keep rotate until we find our right adc, finally stop
                 }
             }
         }
