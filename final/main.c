@@ -3,9 +3,16 @@
 #include "led.h"
 #include "track.h"
 
+// Define a structure to hold the ADC values
+typedef struct {
+    uint16_t adc0;
+    uint16_t adc1;
+    uint16_t adc2;
+} ADCValues;
+
 uint16_t cnt = 0;
 uint16_t m_second = 0;
-
+ADCValues initialAdcValues;
 
 void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int *start, int *ride, uint16_t m_second) {
 	
@@ -61,6 +68,28 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
 void pause_print(const char* message, int delayTime) {
     USART_print(message);
     _delay_ms(delayTime);
+}
+
+void checkAdcAndRotate() {
+    uint16_t currentAdc0, currentAdc1, currentAdc2;
+    // Loop until the break condition is met
+    while (1) {
+        // Read current ADC values
+        currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
+        currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
+        currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
+
+        // Check if current ADC values are close enough to initial values
+        if (abs(currentAdc0 - initialAdcValues.adc0) < 30 &&
+            abs(currentAdc1 - initialAdcValues.adc1) < 30 &&
+            abs(currentAdc2 - initialAdcValues.adc2) < 30) {
+            stop();  // Stop the robot
+            break;
+        } else {
+            rotate_clockwise();  // Continue rotating
+            _delay_ms(100);  // Delay to allow for ADC reading stabilization
+        }
+    } 
 }
 
 int main(void) {
@@ -121,9 +150,7 @@ int main(void) {
             update_hardware(regmdl);
             last_model_state = *regmdl;
         }
-        
-        //todo: change to switch
-        
+                
         if (message == 'S') {
             // Driving logic
             handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second);
@@ -140,14 +167,20 @@ int main(void) {
             }
 
             if (message == 'T') {
-				//todo: merken adc here 
+				// Store current ADC values
+				initialAdcValues.adc0 = adcval0;
+				initialAdcValues.adc1 = adcval1;
+				initialAdcValues.adc2 = adcval2;
 				
                 // rotate clockwise, output something
                 rotate_clockwise();
                 pause_print("Lalalala!\n", 500);
                 if (message == 'H') {
-					//todo: find the right adc, keep rotate until we find our right adc, finally stop
+					// Function to handle the rotation until ADC values match
+					checkAdcAndRotate();  
+					
                 }
+                break;
             }
         }
     }
