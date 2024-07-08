@@ -111,3 +111,23 @@ void init_run(){
     setDutyCycle(PD5, 155);
     setDutyCycle(PD6, 155);
 }
+
+#include "track.h"
+
+// Schnelle Drehung im Uhrzeigersinn
+void rotate_clockwise() {
+    // Set the duty cycles for maximum differential speed
+    //links
+    setDutyCycle(PD5, 255);  // Maximum speed forward for left motors
+    //rechts
+    setDutyCycle(PD6, 0);    // Stop right motors or set to 0 for minimum speed if reverse not desired
+    // links  FORWARD, 1
+    PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
+    // links BACKWARD 1
+    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
+    // RIGHT FORWARD 1
+    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
+    // Right BACKWARD 0
+    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
+}
+

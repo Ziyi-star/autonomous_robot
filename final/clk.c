@@ -2,6 +2,7 @@
 
 ISR(TIMER1_COMPA_vect) {
   cnt+=1;
+  //0,01 sekunde
   if (cnt == 625) {
 	cnt = 0;
 	m_second+=1;
