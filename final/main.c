@@ -10,9 +10,16 @@ typedef struct {
     uint16_t adc2;
 } ADCValues;
 
-uint16_t cnt = 0;
+int cnt_run = 0;
 uint16_t m_second = 0;
 ADCValues initialAdcValues;
+
+int currentLap = 0;
+time_t raceStartTime;
+int lapCompleted = 0;
+int isPaused = 0;
+int isSessionActive = 0;
+int isTurning = 0;
 
 void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int *start, int *ride, uint16_t m_second) {
 	
@@ -49,10 +56,14 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
             *start = m_second;
         }
         if (m_second - *start > 10) {
+			if (currentLap == 0){
+			// 1Hz: Same story, different student ... boring, IES needs to refactor this course.
+				}
+			
             stop();
             (*ride)++;
-            // Exit the loop by breaking the while loop in main
-            return;
+			//todo: print things like asked with cnt_run: 
+            break;
         }
     }
     if (left || right) {
@@ -70,7 +81,7 @@ void pause_print(const char* message, int delayTime) {
     _delay_ms(delayTime);
 }
 
-void checkAdcAndRotate() {
+void check_adc_rotate() {
     uint16_t currentAdc0, currentAdc1, currentAdc2;
     // Loop until the break condition is met
     while (1) {
@@ -145,44 +156,83 @@ int main(void) {
         middle = (adcval1 > 200);
         
         update_model(regmdl, left, middle, right);
-
+		
+		//LED
         if (*regmdl != last_model_state) {
             update_hardware(regmdl);
             last_model_state = *regmdl;
         }
-                
-        if (message == 'S') {
-            // Driving logic
-            handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second);
-			// First 'P'
-            if (message == 'P') {
-                // 1. stop, blink light, output something
-                stop();
-                run_led_sequence(regmdl,500);
-                pause_print("Paused ... zzzZZZzzzZZZzzz ... Press P again to unpause me\n", 1000);
+        
+		// S pressed and before first round
+        if (message == 'S' && currentLap == 0) {
+            isSessionActive = 1;
+           //todo:10Hz Hey you, you know what to do. :-)
+           //todo: in handle put this string: 
+           handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second,);
+           
+        }
+        
+        // currentLap >=1
+        if (isSessionActive && !isPaused) {
+            if (checkLapComplete() && currentLap == 1) {
+				//todo: einmalig: Here I am once more, going down the only round I've ever known...
+                //todo: 1Hz Currently I go round #$ROUND
+                //currentLap++;
+                //runlogik
+            } 
+            if (checkLapComplete() && currentLap == 2) {
+				//todo: einmalig:YEAH, done first lap, feelig well, going for lap 2/3
+				//todo: 1Hz Currently I go round #$ROUND
+                //currentLap++;
+                //runlogik
+            } 
+            if (checkLapComplete() && currentLap == 3) {
+				//todo:einmalig, YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3
+				//todo: 1Hz Currently I go round #$ROUND
+				//runlogik
 			}
-                // second 'P',break, exit
-                if (message == 'P') {
-                break;
-            }
-
-            if (message == 'T') {
-				// Store current ADC values
-				initialAdcValues.adc0 = adcval0;
-				initialAdcValues.adc1 = adcval1;
-				initialAdcValues.adc2 = adcval2;
+			if (checkLapComplete() && currentLap == 4) {
 				
-                // rotate clockwise, output something
-                rotate_clockwise();
-                pause_print("Lalalala!\n", 500);
-                if (message == 'H') {
-					// Function to handle the rotation until ADC values match
-					checkAdcAndRotate();  
-					
-                }
+                int totalSeconds = (int)(time(NULL) - raceStartTime);
+                char finalMsg[150];
+                sprintf(finalMsg, "Finally finished, It's over and done now, after %d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
+                sendOneTimeMessage(finalMsg);
+                //todo: reset
                 break;
             }
         }
+        
+         // Additional logic for pause and resume
+        if (message == 'P') {
+            isPaused = !isPaused;
+            if (isPaused) {
+                stop();  // Stop any movement
+                run_led_sequence(regmdl,500);
+                pause_print("Paused ... zzzZZZzzzZZZzzz ... Press P again to unpause me\n", 1000);
+            }
+        }
+
+        // Turning logic
+        if (message == 'T' && (isSessionActive || isPaused)) {
+            isTurning = 1;
+			// Store current ADC values for 'H'
+			initialAdcValues.adc0 = adcval0;
+			initialAdcValues.adc1 = adcval1;
+			initialAdcValues.adc2 = adcval2;
+			
+            rotate_clockwise();
+            pause_print("Lalalala!\n", 500);
+        } 
+        else if (isTurning && message == 'H') {
+            isTurning = 0;
+            // Ensure the robot stops rotating
+            stop();  
+			// Function to handle the rotation until ADC values match
+			check_adc_rotate();  
+        }
+
+          
     }
     return 0;
+}
 }
