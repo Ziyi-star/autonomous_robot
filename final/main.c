@@ -20,9 +20,37 @@ int lapCompleted = 0;
 int isPaused = 0;
 int isSessionActive = 0;
 int isTurning = 0;
+int isCompleted = 0;
+
+void check_adc_rotate() {
+    uint16_t currentAdc0, currentAdc1, currentAdc2;
+    // Loop until the break condition is met
+    while (1) {
+        // Read current ADC values
+        currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
+        currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
+        currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
+
+        // Check if current ADC values are close enough to initial values
+        if (abs(currentAdc0 - initialAdcValues.adc0) < 30 &&
+            abs(currentAdc1 - initialAdcValues.adc1) < 30 &&
+            abs(currentAdc2 - initialAdcValues.adc2) < 30) {
+            stop();  // Stop the robot
+            break;
+        } else {
+            rotate_clockwise();  // Continue rotating
+            _delay_ms(100);  // Delay to allow for ADC reading stabilization
+        }
+    } 
+}
+
+// Function to print a specified message and delay for a specified amount of time
+void pause_print(const char* message, int delayTime) {
+    USART_print(message);
+    _delay_ms(delayTime);
+}
 
 void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int *start, int *ride, uint16_t m_second) {
-	
     if (!left && middle && !right) {
         gerade();
         *start = 0;
@@ -56,13 +84,12 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
             *start = m_second;
         }
         if (m_second - *start > 10) {
+			isCompleted = 1
 			if (currentLap == 0){
-			// 1Hz: Same story, different student ... boring, IES needs to refactor this course.
+				//todo: 1Hz: Same story, different student ... boring, IES needs to refactor this course.
 				}
-			
-            stop();
-            (*ride)++;
-			//todo: print things like asked with cnt_run: 
+            //stop();
+            currentLap++;
             break;
         }
     }
@@ -73,34 +100,6 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
             *last_right = 0;
         }
     }
-}
-
-// Function to print a specified message and delay for a specified amount of time
-void pause_print(const char* message, int delayTime) {
-    USART_print(message);
-    _delay_ms(delayTime);
-}
-
-void check_adc_rotate() {
-    uint16_t currentAdc0, currentAdc1, currentAdc2;
-    // Loop until the break condition is met
-    while (1) {
-        // Read current ADC values
-        currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
-        currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
-        currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
-
-        // Check if current ADC values are close enough to initial values
-        if (abs(currentAdc0 - initialAdcValues.adc0) < 30 &&
-            abs(currentAdc1 - initialAdcValues.adc1) < 30 &&
-            abs(currentAdc2 - initialAdcValues.adc2) < 30) {
-            stop();  // Stop the robot
-            break;
-        } else {
-            rotate_clockwise();  // Continue rotating
-            _delay_ms(100);  // Delay to allow for ADC reading stabilization
-        }
-    } 
 }
 
 int main(void) {
@@ -157,7 +156,7 @@ int main(void) {
         
         update_model(regmdl, left, middle, right);
 		
-		//LED
+		//LED goes with the adc
         if (*regmdl != last_model_state) {
             update_hardware(regmdl);
             last_model_state = *regmdl;
@@ -168,31 +167,32 @@ int main(void) {
             isSessionActive = 1;
            //todo:10Hz Hey you, you know what to do. :-)
            //todo: in handle put this string: 
-           handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second,);
-           
+           handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second,);        
         }
         
         // currentLap >=1
         if (isSessionActive && !isPaused) {
-            if (checkLapComplete() && currentLap == 1) {
+            if (isCompleted && currentLap == 1) {
+				isCompleted = 0;
 				//todo: einmalig: Here I am once more, going down the only round I've ever known...
                 //todo: 1Hz Currently I go round #$ROUND
                 //currentLap++;
                 //runlogik
             } 
-            if (checkLapComplete() && currentLap == 2) {
+            if (isCompleted && currentLap == 2) {
+				isCompleted = 0;
 				//todo: einmalig:YEAH, done first lap, feelig well, going for lap 2/3
 				//todo: 1Hz Currently I go round #$ROUND
                 //currentLap++;
                 //runlogik
             } 
-            if (checkLapComplete() && currentLap == 3) {
+            if (isCompleted && currentLap == 3) {
+				isCompleted = 0;
 				//todo:einmalig, YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3
 				//todo: 1Hz Currently I go round #$ROUND
 				//runlogik
 			}
 			if (checkLapComplete() && currentLap == 4) {
-				
                 int totalSeconds = (int)(time(NULL) - raceStartTime);
                 char finalMsg[150];
                 sprintf(finalMsg, "Finally finished, It's over and done now, after %d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
