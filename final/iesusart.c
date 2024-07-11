@@ -18,10 +18,14 @@ unsigned char USART_receiveByte(void)
 {
     // Wait for data to be received
     while (!(UCSR0A & (1 << RXC0))) {
-        // Busy waiting! zzzZZZzzzZZZzzz
+	// Wait for data to be received
+		if (!(UCSR0A & (1 << RXC0))) {
+			// Busy waiting! zzzZZZzzzZZZzzz
+			return 0;
     }    
     // Return received data from buffer
     return UDR0;
+}
 }
 
 /**
