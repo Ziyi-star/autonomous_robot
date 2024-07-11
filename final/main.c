@@ -119,7 +119,8 @@ int main(void) {
     setup_ddr_all();
     USART_init(UBRR_SETTING);
 
-    // Allocate 1 byte in memory/on heap for a representation (model) of the register and clear the contents directly, and update everything accordingly.
+    // Allocate 1 byte in memory/on heap for a representation (model) of the register and clear the contents directly, 
+    // and update everything accordingly.
     srr_t *regmdl = malloc(sizeof(srr_t));
     clear(regmdl);
 
@@ -154,28 +155,27 @@ int main(void) {
         
 		// S pressed and before first round
         if (message == 'S' && currentLap == 0) {
-            isSessionActive = 1;
-           //todo: handle driving logic besser anpassen 
-           handleDrivingLogic(&left, &middle, &right, &last_right, &start);        
+			isSessionActive = 1;
+			handleDrivingLogic(&left, &middle, &right, &last_right, &start);        
         }
         
         // currentLap >=1
         if (isSessionActive && !isPaused) {
             if (isCompleted && currentLap == 1) {
 				isCompleted = 0;
-				USART_print("SHere I am once more, going down the only round I've ever known...\n"); 
-                //todo: runlogik
+				USART_print("Here I am once more, going down the only round I've ever known...\n"); 
+                handleDrivingLogic(&left, &middle, &right, &last_right, &start);  
             } 
             if (isCompleted && currentLap == 2) {
 				isCompleted = 0;
 				USART_print("YEAH, done first lap, feelig well, going for lap 2/3\n"); 
-				//todo: runlogik
+				handleDrivingLogic(&left, &middle, &right, &last_right, &start);  
             } 
             if (isCompleted && currentLap == 3) {
 				isCompleted = 0;
 				USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
-				//todo:runlogik
-			}
+				handleDrivingLogic(&left, &middle, &right, &last_right, &start);  			
+				}
 			if (checkLapComplete() && currentLap == 4) {
                 int totalSeconds = (int)(time(NULL) - raceStartTime);
                 char finalMsg[150];
