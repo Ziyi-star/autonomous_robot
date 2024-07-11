@@ -57,6 +57,6 @@ void clear(srr_t *regmdl);
 
 void setup_ddr_all();
 
-void run_led_sequence(srr_t *regmdl, int delay_ms) ;
+void run_led_sequence(srr_t *regmdl);
 
 #endif

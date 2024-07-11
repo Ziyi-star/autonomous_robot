@@ -86,20 +86,26 @@ void setup_ddr_all() {
 /**
   Function to run LED sequence like a running light.
 */
-void run_led_sequence(srr_t *regmdl, int delay_ms) {
-    // Running light loop
+
+void run_led_sequence(srr_t *regmdl) {
+    const int delay_ms = 143; // Each LED lights up for 143 ms
+
+    // Forward direction
     for (int i = 0; i < REGWIDTH; i++) {
-        // Set the corresponding bit in the model
-        *regmdl = 1 << i;
-
-        // Update the hardware
+        *regmdl = 1 << i;  // Turn on only the ith LED
         update_hardware(regmdl);
-
-        // Wait for the specified time
         _delay_ms(delay_ms);
     }
 
-    // Clear the model after the sequence is done
+    // Backward direction, skipping the first and last LEDs as they are already handled
+    for (int i = REGWIDTH - 2; i > 0; i--) {
+        *regmdl = 1 << i;
+        update_hardware(regmdl);
+        _delay_ms(delay_ms);
+    }
+
+    // Clear LEDs at the end of the cycle
     clear(regmdl);
 }
+
 

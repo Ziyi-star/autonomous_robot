@@ -11,7 +11,6 @@ typedef struct {
 
 ADCValues initialAdcValues;
 
-
 void check_adc_rotate() {
     uint16_t currentAdc0, currentAdc1, currentAdc2;
     // Loop until the break condition is met
@@ -182,7 +181,7 @@ int main(void) {
             isPaused = !isPaused;
             if (isPaused) {
                 stop();  // Stop any movement
-                run_led_sequence(regmdl,500);
+                run_led_sequence(regmdl);
             }
         }
 
