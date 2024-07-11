@@ -7,6 +7,14 @@ ISR(TIMER1_COMPA_vect) {
 	cnt = 0;
 	m_second+=1;
   }
+  //10 Hz 
+  if (cnt == 6250) {
+	  // When the robot is not on the start field and the race has not started
+	  if (!isCompleted && currentLap == 0) {
+            USART_print("Hey you, you know what to do. :-)\n");
+        }
+	  
+  }
   //1 Hz 
   if (cnt == 62500) {
 	  // When the robot is on the start field and the race has not started
@@ -20,14 +28,7 @@ ISR(TIMER1_COMPA_vect) {
             USART_print(round_msg);
         }
   }
-  //10 Hz 
-  if (cnt == 6250) {
-	  // When the robot is not on the start field and the race has not started
-	  if (!isCompleted && currentLap == 0) {
-            USART_print("Hey you, you know what to do. :-)\n");
-        }
-	  
-  }
+  
 }
 
 void setup_heartbeat_timer() {

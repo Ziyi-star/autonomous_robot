@@ -10,7 +10,6 @@ typedef struct {
     uint16_t adc2;
 } ADCValues;
 
-int cnt_run = 0;
 uint16_t m_second = 0;
 ADCValues initialAdcValues;
 
@@ -43,54 +42,49 @@ void check_adc_rotate() {
     } 
 }
 
-// Function to print a specified message and delay for a specified amount of time
-void pause_print(const char* message, int delayTime) {
-    USART_print(message);
-    _delay_ms(delayTime);
-}
 
-void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int *start, int *ride, uint16_t m_second) {
-    if (!left && middle && !right) {
+void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int *start) {
+    if (!*left && *middle && !*right) {
         gerade();
         *start = 0;
-    } else if (!left && !middle && !right) {
+    } else if (!*left && !*middle && !*right) {
         if (*last_right) {
             turn_right();
         } else {
             turn_left();
         }
-    } else if (!left && !middle && right) {
+    } else if (!*left && !*middle && *right) {
         drive_right();
         *start = 0;
-    } else if (!left && middle && right) {
+    } else if (!*left && *middle && *right) {
         turn_right();
         *start = 0;
-    } else if (left && !middle && !right) {
+    } else if (*left && !*middle && !*right) {
         drive_left();
         *start = 0;
-    } else if (left && !middle && right) {
+    } else if (*left && !*middle && *right) {
         gerade();
         *start = 0;
-    } else if (left && middle && !right) {
+    } else if (*left && *middle && !*right) {
         turn_left();
         *start = 0;
     }
     // Start field
-    else if (left && middle && right) {
+    else if (*left && *middle && *right) {
         gerade();
         // If threshold then increment
         if (!*start) {
             *start = m_second;
         }
         if (m_second - *start > 10) {
-			isCompleted = 1
+			isCompleted = 1;
             stop();
             currentLap++;
-            break;
+            break; 
         }
     }
-    if (left || right) {
-        if (right) {
+    if (*left || *right) {
+        if (*right) {
             *last_right = 1;
         } else {
             *last_right = 0;
@@ -98,11 +92,11 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
     }
 }
 
+
 int main(void) {
 	
     setup_heartbeat_timer();
     int start = 0;
-    int ride = 0;
     
     init_run();
     
@@ -161,9 +155,8 @@ int main(void) {
 		// S pressed and before first round
         if (message == 'S' && currentLap == 0) {
             isSessionActive = 1;
-           //todo:10Hz Hey you, you know what to do. :-)
            //todo: handle driving logic besser anpassen 
-           handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second,);        
+           handleDrivingLogic(&left, &middle, &right, &last_right, &start);        
         }
         
         // currentLap >=1
@@ -181,7 +174,7 @@ int main(void) {
             if (isCompleted && currentLap == 3) {
 				isCompleted = 0;
 				USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
-				//runlogik
+				//todo:runlogik
 			}
 			if (checkLapComplete() && currentLap == 4) {
                 int totalSeconds = (int)(time(NULL) - raceStartTime);
@@ -189,6 +182,7 @@ int main(void) {
                 sprintf(finalMsg, "Finally finished, It's over and done now, after %d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
                 sendOneTimeMessage(finalMsg);
                 //todo: reset
+                isSessionActive = 0;
                 break;
             }
         }
@@ -221,8 +215,6 @@ int main(void) {
 			// Function to handle the rotation until ADC values match
 			check_adc_rotate();  
         }
-
-          
     }
     return 0;
 }
