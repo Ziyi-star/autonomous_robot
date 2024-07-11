@@ -1,7 +1,5 @@
 #include "main.h"
-#include "clk.h"
-#include "led.h"
-#include "track.h"
+
 
 // Define a structure to hold the ADC values
 typedef struct {
@@ -129,7 +127,7 @@ int main(void) {
 
     while (1) {
 		
-		message = USART_receiveByteSelf();
+		message = USART_receiveByte();
 		 
         adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
         adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
@@ -172,9 +170,7 @@ int main(void) {
 				}
 			if (isCompleted && currentLap == 4) {
                 int totalSeconds = (int)(time(NULL) - raceStartTime);
-                char finalMsg[150];
-                sprintf(finalMsg, "Finally finished, It's over and done now, after %d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
-                sendOneTimeMessage(finalMsg);
+                USART_print(" Finally finished , It's over and done now, after $SECONDS seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n");
                 //todo: reset
                 isSessionActive = 0;
                 break;
@@ -197,9 +193,7 @@ int main(void) {
 			initialAdcValues.adc0 = adcval0;
 			initialAdcValues.adc1 = adcval1;
 			initialAdcValues.adc2 = adcval2;
-			
             rotate_clockwise();
-            pause_print("Lalalala!\n", 500);
         } 
         else if (isTurning && message == 'H') {
             isTurning = 0;

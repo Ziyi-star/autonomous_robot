@@ -6,7 +6,6 @@
 #include "iesusart.h"
 #include "iesmotors.h"
 #include "iesadc.h"
-#include "iessreg.c"
 
 // Konstanten für die PB- und PD-Pins
 #define PIN_IN1_FORWARD_LEFT PD7

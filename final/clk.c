@@ -13,8 +13,14 @@ ISR(TIMER1_COMPA_vect) {
 	  if (!isCompleted && currentLap == 0) {
             USART_print("Hey you, you know what to do. :-)\n");
         }
-	  
   }
+  //2 Hz
+  if (cnt == 31250) {
+	  if (isTurning) {
+		USART_print("Lalalala!\n");
+		}
+	}  
+	
   //1 Hz 
   if (cnt == 62500) {
 	  // When the robot is on the start field and the race has not started
@@ -31,6 +37,8 @@ ISR(TIMER1_COMPA_vect) {
 			USART_print("Paused ... zzzZZZzzzZZZzzz ... Press P again to unpause me\n");
 		}
   }
+  
+  
   
 }
 
