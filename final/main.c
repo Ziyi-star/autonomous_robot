@@ -16,7 +16,6 @@ ADCValues initialAdcValues;
 
 int currentLap = 0;
 time_t raceStartTime;
-int lapCompleted = 0;
 int isPaused = 0;
 int isSessionActive = 0;
 int isTurning = 0;
@@ -85,10 +84,7 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
         }
         if (m_second - *start > 10) {
 			isCompleted = 1
-			if (currentLap == 0){
-				//todo: 1Hz: Same story, different student ... boring, IES needs to refactor this course.
-				}
-            //stop();
+            stop();
             currentLap++;
             break;
         }
@@ -166,7 +162,7 @@ int main(void) {
         if (message == 'S' && currentLap == 0) {
             isSessionActive = 1;
            //todo:10Hz Hey you, you know what to do. :-)
-           //todo: in handle put this string: 
+           //todo: handle driving logic besser anpassen 
            handleDrivingLogic(&left, &middle, &right, &last_right, &start, &ride, m_second,);        
         }
         
@@ -174,22 +170,17 @@ int main(void) {
         if (isSessionActive && !isPaused) {
             if (isCompleted && currentLap == 1) {
 				isCompleted = 0;
-				//todo: einmalig: Here I am once more, going down the only round I've ever known...
-                //todo: 1Hz Currently I go round #$ROUND
-                //currentLap++;
-                //runlogik
+				USART_print("SHere I am once more, going down the only round I've ever known...\n"); 
+                //todo: runlogik
             } 
             if (isCompleted && currentLap == 2) {
 				isCompleted = 0;
-				//todo: einmalig:YEAH, done first lap, feelig well, going for lap 2/3
-				//todo: 1Hz Currently I go round #$ROUND
-                //currentLap++;
-                //runlogik
+				USART_print("YEAH, done first lap, feelig well, going for lap 2/3\n"); 
+				//todo: runlogik
             } 
             if (isCompleted && currentLap == 3) {
 				isCompleted = 0;
-				//todo:einmalig, YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3
-				//todo: 1Hz Currently I go round #$ROUND
+				USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
 				//runlogik
 			}
 			if (checkLapComplete() && currentLap == 4) {

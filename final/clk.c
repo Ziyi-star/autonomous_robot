@@ -7,6 +7,27 @@ ISR(TIMER1_COMPA_vect) {
 	cnt = 0;
 	m_second+=1;
   }
+  //1 Hz 
+  if (cnt == 62500) {
+	  // When the robot is on the start field and the race has not started
+        if (isCompleted && currentLap == 0) {
+            USART_print("Same story, different student ... boring, IES needs to refactor this course.\n");
+        }
+        // When the robot is racing
+        else if (isCompleted && currentLap > 0) {
+            char round_msg[50];
+            sprintf(round_msg, "Currently I go round #%d\n", currentLap);
+            USART_print(round_msg);
+        }
+  }
+  //10 Hz 
+  if (cnt == 6250) {
+	  // When the robot is not on the start field and the race has not started
+	  if (!isCompleted && currentLap == 0) {
+            USART_print("Hey you, you know what to do. :-)\n");
+        }
+	  
+  }
 }
 
 void setup_heartbeat_timer() {
@@ -24,3 +45,5 @@ void setup_heartbeat_timer() {
                            // BTW^2: Remember that OCR1[A|B] are 16 bit!
   sei();                   // Enable interrupts!
 }
+
+
