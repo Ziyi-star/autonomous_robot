@@ -22,11 +22,14 @@ ISR(TIMER1_COMPA_vect) {
             USART_print("Same story, different student ... boring, IES needs to refactor this course.\n");
         }
         // When the robot is racing
-        else if (isCompleted && currentLap > 0) {
+        if (isCompleted && currentLap > 0) {
             char round_msg[50];
             sprintf(round_msg, "Currently I go round #%d\n", currentLap);
             USART_print(round_msg);
         }
+        if (isPaused){
+			USART_print("Paused ... zzzZZZzzzZZZzzz ... Press P again to unpause me\n");
+		}
   }
   
 }

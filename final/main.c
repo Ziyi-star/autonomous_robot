@@ -10,15 +10,9 @@ typedef struct {
     uint16_t adc2;
 } ADCValues;
 
-uint16_t m_second = 0;
+
 ADCValues initialAdcValues;
 
-int currentLap = 0;
-time_t raceStartTime;
-int isPaused = 0;
-int isSessionActive = 0;
-int isTurning = 0;
-int isCompleted = 0;
 
 void check_adc_rotate() {
     uint16_t currentAdc0, currentAdc1, currentAdc2;
@@ -80,7 +74,7 @@ void handleDrivingLogic(int *left, int *middle, int *right, int *last_right, int
 			isCompleted = 1;
             stop();
             currentLap++;
-            break; 
+            return; 
         }
     }
     if (*left || *right) {
@@ -176,7 +170,7 @@ int main(void) {
 				USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
 				handleDrivingLogic(&left, &middle, &right, &last_right, &start);  			
 				}
-			if (checkLapComplete() && currentLap == 4) {
+			if (isCompleted && currentLap == 4) {
                 int totalSeconds = (int)(time(NULL) - raceStartTime);
                 char finalMsg[150];
                 sprintf(finalMsg, "Finally finished, It's over and done now, after %d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
@@ -193,7 +187,6 @@ int main(void) {
             if (isPaused) {
                 stop();  // Stop any movement
                 run_led_sequence(regmdl,500);
-                pause_print("Paused ... zzzZZZzzzZZZzzz ... Press P again to unpause me\n", 1000);
             }
         }
 
@@ -217,5 +210,4 @@ int main(void) {
         }
     }
     return 0;
-}
 }
