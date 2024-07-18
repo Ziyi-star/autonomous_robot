@@ -15,14 +15,15 @@
 
 
 
-void turn_right();
-void turn_left();
-void drive_right();
-void drive_left();
+void big_right();
+void big_left();
+void small_right();
+void small_left();
 void gerade();
 void init_run();
 void stop();
 void rotate_clockwise();
+
 
 #endif
 

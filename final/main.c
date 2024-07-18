@@ -39,10 +39,10 @@ int main(void) {
     int start = 0;
     
     init_run();
-    
-    // ADC zu lesen   
+   
     USART_init(UBRR_SETTING);
-
+    
+	// ADC zu lesen 
     DR_ADC0 &= ~(1 << DP_ADC0);
     DR_ADC1 &= ~(1 << DP_ADC1);
     DR_ADC2 &= ~(1 << DP_ADC2);
@@ -57,7 +57,6 @@ int main(void) {
     
     // Setup everything
     setup_ddr_all();
-    USART_init(UBRR_SETTING);
 
     // Allocate 1 byte in memory/on heap for a representation (model) of the register and clear the contents directly, 
     // and update everything accordingly.
@@ -65,6 +64,7 @@ int main(void) {
     clear(regmdl);
 
     srr_t last_model_state = *regmdl;
+    
     
     int left;
     int right;
@@ -94,119 +94,122 @@ int main(void) {
             last_model_state = *regmdl;
         }
         
-		switch (message){
-			case 'S':
-				//STARTFIELD
-				if (left && middle && right){
-					USART_print("Here I am once more, going down the only round I've ever known...\n"); 
-					
-					//run logic
-					if (!left && middle && !right) {
-					   gerade();
-					   start = 0;
-					}
-					else if (!left && !middle && !right) {
-					   if (last_right){
-						   big_right();
-						   }
-						else{
-							big_left();
-							}
-					}
-					else if (!left && !middle && right) {
+		if (message == 'S'){
+			//STARTFIELD
+			if (left && middle && right){
+				USART_print("Here I am once more, going down the only round I've ever known...\n"); 
+				
+				//run logic
+				if (!left && middle && !right) {
+				   gerade();
+				   start = 0;
+				}
+				else if (!left && !middle && !right) {
+				   if (last_right){
 					   big_right();
-						start = 0;
-
-					}
-					else if (!left && middle && right) {
-					   small_right();
-					   start = 0;
-
-					}
-					else if(left && !middle && !right){
+					   }
+					else{
 						big_left();
-						start = 0;
+						}
+				}
+				else if (!left && !middle && right) {
+				   big_right();
+					start = 0;
 
-					}
-					else if (left && !middle && right){
-						gerade();
-						start = 0;
-					}
-					else if( left && middle && !right){
-						small_left();
-						start = 0;
-					}
-					//startfield
-					else if (left && middle && right){
-						gerade();
-						//if schwellwert dann hochzählen
-						if (!start){
-							start = m_second;
-							}
-						if(m_second-start > 10){
-							currentLap++;
-							if (currentLap == 2){
-							USART_print("YEAH, done first lap, feelig well, going for lap 2/3\n");
-							}
-							if (currentLap == 3){
-							USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
-							}
-							if (currentLap == 4) {
-								int totalSeconds = (int)(time(NULL) - raceStartTime);
-								USART_print(" Finally finished , It's over and done now, after $SECONDS seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n");
-								//todo: reset
-								stop();
-							}
+				}
+				else if (!left && middle && right) {
+				   small_right();
+				   start = 0;
+
+				}
+				else if(left && !middle && !right){
+					big_left();
+					start = 0;
+
+				}
+				else if (left && !middle && right){
+					gerade();
+					start = 0;
+				}
+				else if( left && middle && !right){
+					small_left();
+					start = 0;
+				}
+				//startfield
+				else if (left && middle && right){
+					gerade();
+					//if schwellwert dann hochzählen
+					if (!start){
+						start = m_second;
 						}
-					}	
-					if (left || right){
-						if (right){
-							last_right = 1;
-							}
-						else{
-							last_right = 0;
-							}
+					if(m_second-start > 10){
+						currentLap++;
+						if (currentLap == 2){
+						USART_print("YEAH, done first lap, feelig well, going for lap 2/3\n");
 						}
-						
-				//print 1hz things
-				if (second) {
-					sprintf(str_buffer, "Currently I go round #%d\n", currentLap);
-					USART_print(str_buffer);
-					second = 0;
-				}
-				}
-				//NOT STARTFIELD
-				else {
-					if (centi_second) {
-						USART_print("Hey you, you know what to do. :-)\n");
-						centi_second = 0;
+						if (currentLap == 3){
+						USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
+						}
+						if (currentLap == 4) {
+							int totalSeconds = (int)(time(NULL) - raceStartTime);
+							//todo: reset
+							USART_print(" Finally finished , It's over and done now, after $SECONDS seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n");
+							stop();
+							_delay_ms(5000);
+							wdt_enable(WDTO_5S);
+							// Loop forever, watchdog will reset the microcontroller
+							while(1);  
+						}
 					}
+				}	
+				if (left || right){
+					if (right){
+						last_right = 1;
+						}
+					else{
+						last_right = 0;
+						}
+					}
+					
+			//print 1hz things
+			if (second) {
+				sprintf(str_buffer, "Currently I go round #%d\n", currentLap);
+				USART_print(str_buffer);
+				second = 0;
+			}
+			}
+			//NOT STARTFIELD
+			else {
+				if (centi_second) {
+					USART_print("Hey you, you know what to do. :-)\n");
+					centi_second = 0;
 				}
-				break;
+			}
+		}
 			
-			case 'P':
+		if (message == 'P'){
 				isPaused = !isPaused;
 				if (isPaused) {
 					stop();  
 					run_led_sequence(regmdl);
 				}
-				break;
+		}
 			
-			case 'T':
+		if (message == 'S') {
 				// Store current ADC values for 'H'
 				initialAdcValues.adc0 = adcval0;
 				initialAdcValues.adc1 = adcval1;
 				initialAdcValues.adc2 = adcval2;
 				rotate_clockwise();
-				break;
+		}
 				
-			case 'H':
+		if (message == 'H'){
 				stop();  
 				// Function to handle the rotation until ADC values match
 				check_adc_rotate();
-				break;  
-			}
-        
+		}
+		
+	}
+ return 0;      
     }
-    return 0;
-}
+    
