@@ -107,24 +107,24 @@ int main(void) {
 					}
 					else if (!left && !middle && !right) {
 					   if (last_right){
-						   turn_right();
+						   big_right();
 						   }
 						else{
-							turn_left();
+							big_left();
 							}
 					}
 					else if (!left && !middle && right) {
-					   drive_right();
+					   big_right();
 						start = 0;
 
 					}
 					else if (!left && middle && right) {
-					   turn_right();
+					   small_right();
 					   start = 0;
 
 					}
 					else if(left && !middle && !right){
-						drive_left();
+						big_left();
 						start = 0;
 
 					}
@@ -133,7 +133,7 @@ int main(void) {
 						start = 0;
 					}
 					else if( left && middle && !right){
-						turn_left();
+						small_left();
 						start = 0;
 					}
 					//startfield
