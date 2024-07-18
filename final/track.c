@@ -1,9 +1,9 @@
 #include "track.h"
 
+ 
 
-// Leichte Abbiegen nach rechts
-void turn_right(){
-    // Set the duty cycles for PD5/PD6
+
+void big_right(){
     //links
     setDutyCycle(PD5, 255);
     //rechts
@@ -19,9 +19,8 @@ void turn_right(){
 
 }
 
-// grosse Abbiegen nach links
-void turn_left(){
-    // Set the duty cycles for PD5/PD6
+
+void big_left(){
     //links
     setDutyCycle(PD5, 180);
     //rechts
@@ -36,16 +35,14 @@ void turn_left(){
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
 
-// Leichte Abbiegen nach links
-void drive_left(){
-    // Set the duty cycles for PD5/PD6
+void small_right(){
     //links
-    setDutyCycle(PD5, 155);
+    setDutyCycle(PD5, 255);
     //rechts
-    setDutyCycle(PD6, 255);
+    setDutyCycle(PD6, 155);
     // links  FORWARD, 1
     PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
-    // links BACKWARD 1
+    // links BACKWARD 0
     PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
     // RIGHT FORWARD 1
     PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
@@ -53,22 +50,23 @@ void drive_left(){
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
 
-// Leichte Abbiegen nach links
-void drive_right(){
-    // Set the duty cycles for PD5/PD6
+
+void small_left(){
     //links
-    setDutyCycle(PD5, 255);
+    setDutyCycle(PD5, 155);
     //rechts
-    setDutyCycle(PD6, 155);
-    // links  FORWARD, 1
-    PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
+    setDutyCycle(PD6, 255);
+    // links  FORWARD, 0
+    PORTD &= ~(1 << PIN_IN1_FORWARD_LEFT);
     // links BACKWARD 1
-    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
+    PORTB |= (1 << PIN_IN2_BACKWARD_LEFT);
     // RIGHT FORWARD 1
     PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
     // Right BACKWARD 0
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
+
+
 
 void gerade(){
     // Set the duty cycles for PD5/PD6, speed
@@ -114,7 +112,7 @@ void init_run(){
 
 #include "track.h"
 
-// Schnelle Drehung im Uhrzeigersinn
+// Schnelle Drehung im Uhrzeigersinn, right
 void rotate_clockwise() {
     // Set the duty cycles for maximum differential speed
     //links
