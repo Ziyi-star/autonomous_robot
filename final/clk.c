@@ -21,6 +21,7 @@ ISR(TIMER1_COMPA_vect) {
 	  second = 1;
   }
   
+  
 }
 
 void setup_heartbeat_timer() {

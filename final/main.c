@@ -93,12 +93,10 @@ int main(void) {
             update_hardware(regmdl);
             last_model_state = *regmdl;
         }
-        
-		if (message == 'S'){
+        if (message == 'S'){
 			//STARTFIELD
 			if (left && middle && right){
 				USART_print("Here I am once more, going down the only round I've ever known...\n"); 
-				
 				//run logic
 				if (!left && middle && !right) {
 				   gerade();
@@ -153,10 +151,11 @@ int main(void) {
 						if (currentLap == 4) {
 							int totalSeconds = (int)(time(NULL) - raceStartTime);
 							//todo: reset
-							USART_print(" Finally finished , It's over and done now, after $SECONDS seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n");
+							sprintf(str_buffer, " Finally finished , It's over and done now, after #%d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", totalSeconds);
+							USART_print(str_buffer);
 							stop();
 							_delay_ms(5000);
-							wdt_enable(WDTO_5S);
+							wdt_enable(WDTO_4S);
 							// Loop forever, watchdog will reset the microcontroller
 							while(1);  
 						}
@@ -177,7 +176,39 @@ int main(void) {
 				USART_print(str_buffer);
 				second = 0;
 			}
+			
+			if (message == 'P'){
+				isPaused = !isPaused;
+					if (isPaused) {
+						stop();  
+						run_led_sequence(regmdl);
+						if (second){
+							USART_print("Pause\n");
+							second = 0;
+						}
+					}else {
+						break;
+					}
 			}
+			
+			if (message == 'T'){
+				// Store current ADC values for 'H'
+				initialAdcValues.adc0 = adcval0;
+				initialAdcValues.adc1 = adcval1;
+				initialAdcValues.adc2 = adcval2;
+				rotate_clockwise();
+				if (half_second){
+					USART_print("lalala.\n");
+					half_second = 0;
+				}
+				if (message == 'H'){
+					stop();  
+					// Function to handle the rotation until ADC values match
+					check_adc_rotate();
+				}
+			}
+			
+		}
 			//NOT STARTFIELD
 			else {
 				if (centi_second) {
@@ -185,31 +216,9 @@ int main(void) {
 					centi_second = 0;
 				}
 			}
-		}
-			
-		if (message == 'P'){
-				isPaused = !isPaused;
-				if (isPaused) {
-					stop();  
-					run_led_sequence(regmdl);
-				}
-		}
-			
-		if (message == 'S') {
-				// Store current ADC values for 'H'
-				initialAdcValues.adc0 = adcval0;
-				initialAdcValues.adc1 = adcval1;
-				initialAdcValues.adc2 = adcval2;
-				rotate_clockwise();
-		}
 				
-		if (message == 'H'){
-				stop();  
-				// Function to handle the rotation until ADC values match
-				check_adc_rotate();
-		}
-		
 	}
- return 0;      
+	return 0;      
     }
+}
     

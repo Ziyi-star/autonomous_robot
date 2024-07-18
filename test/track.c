@@ -1,7 +1,5 @@
 #include "track.h"
 
- 
-
 
 void big_right(){
     //links
