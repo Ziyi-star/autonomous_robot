@@ -11,3 +11,6 @@ char second = 0;
 int currentLap = 1;
 time_t raceStartTime;
 char isPaused = 0;
+
+uint16_t time_counter = 0;
+char count_time = 0;
