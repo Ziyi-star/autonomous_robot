@@ -37,9 +37,9 @@ void big_left(){
 
 void small_right(){
     //links
-    setDutyCycle(PD5, 255);
+    setDutyCycle(PD5, 155);
     //rechts
-    setDutyCycle(PD6, 155);
+    setDutyCycle(PD6, 0);
     // links  FORWARD, 1
     PORTD |= (1 << PIN_IN1_FORWARD_LEFT);
     // links BACKWARD 0
@@ -53,9 +53,9 @@ void small_right(){
 
 void small_left(){
     //links
-    setDutyCycle(PD5, 155);
+    setDutyCycle(PD5, 0);
     //rechts
-    setDutyCycle(PD6, 255);
+    setDutyCycle(PD6, 155);
     // links  FORWARD, 0
     PORTD &= ~(1 << PIN_IN1_FORWARD_LEFT);
     // links BACKWARD 1
@@ -91,9 +91,7 @@ void stop(){
 
 void init_run(){
     // Set Data Direction Register C [0|1|2] as input.
-    DDRC = ~((1 << DDC0) | (1 << DDC1) | (1 << DDC2));
-    // Initialize U(S)ART!
-    USART_init(UBRR_SETTING);
+    DDRC &= ~((1 << DDC0) | (1 << DDC1) | (1 << DDC2));
     // Delete everything on ports B and D
     DDRD = 0;
     DDRB = 0;
@@ -104,7 +102,7 @@ void init_run(){
     // Make PWM work on PD[5|6], immer fur motor
     setupTimer0();
     // Set PB0, PB1, and PB3 as output (IN[2|3|4])
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3);
+    DDRB |= (1 << DD0) | (1 << DD1) | (1 << DD3);
     // Set the duty cycles for PD5/PD6
     setDutyCycle(PD5, 155);
     setDutyCycle(PD6, 155);

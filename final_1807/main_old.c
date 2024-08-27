@@ -70,13 +70,17 @@ int main(void) {
     int right;
     int middle;
     
+    int last_middle = 0;
     int last_right = 0;
     char message = 0;
     char str_buffer [50];
+    char state = 0;
 
     while (1) {
 		
 		message = USART_receiveByte();
+		
+		
 		 
         adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
         adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
@@ -88,30 +92,49 @@ int main(void) {
         
         update_model(regmdl, left, middle, right);
 		
+			//STARTFIELD
+		if(message == 'S' && left && middle && right && state != 'S'){
+			state = 'S';
+			USART_print("Here I am once more, going down the only round I've ever known...\n"); 
+		}
+		
+					//NOT STARTFIELD
+		if(state == 0 && !(middle && right && left) ){
+				if (centi_second) {
+					USART_print("Hey you, you know what to do. :-)\n");
+					centi_second = 0;
+				}
+			}
+		
 		//LED goes with the adc
         if (*regmdl != last_model_state) {
             update_hardware(regmdl);
             last_model_state = *regmdl;
         }
-        if (message == 'S'){
-			//STARTFIELD
-			if (left && middle && right){
-				USART_print("Here I am once more, going down the only round I've ever known...\n"); 
+        if (state == 'S'){
 				//run logic
 				if (!left && middle && !right) {
 				   gerade();
 				   start = 0;
 				}
 				else if (!left && !middle && !right) {
+					
+					if(!last_middle) {
+				   
 				   if (last_right){
 					   big_right();
 					   }
 					else{
 						big_left();
 						}
+					} else{
+						gerade();
+					}
+						
+					start = 0;
 				}
 				else if (!left && !middle && right) {
-				   big_right();
+				   small_right();
 					start = 0;
 
 				}
@@ -121,7 +144,7 @@ int main(void) {
 
 				}
 				else if(left && !middle && !right){
-					big_left();
+					small_left();
 					start = 0;
 
 				}
@@ -168,6 +191,10 @@ int main(void) {
 					else{
 						last_right = 0;
 						}
+						
+						last_middle = 0;
+					} else{
+						last_middle = middle;
 					}
 					
 			//print 1hz things
@@ -176,8 +203,9 @@ int main(void) {
 				USART_print(str_buffer);
 				second = 0;
 			}
-			
-			if (message == 'P'){
+				
+		}
+		if (state == 'P'){
 				isPaused = !isPaused;
 					if (isPaused) {
 						stop();  
@@ -191,7 +219,7 @@ int main(void) {
 					}
 			}
 			
-			if (message == 'T'){
+			if (state == 'T'){
 				// Store current ADC values for 'H'
 				initialAdcValues.adc0 = adcval0;
 				initialAdcValues.adc1 = adcval1;
@@ -201,24 +229,13 @@ int main(void) {
 					USART_print("lalala.\n");
 					half_second = 0;
 				}
-				if (message == 'H'){
+				if (state == 'H'){
 					stop();  
 					// Function to handle the rotation until ADC values match
 					check_adc_rotate();
 				}
 			}
-			
-		}
-			//NOT STARTFIELD
-			else {
-				if (centi_second) {
-					USART_print("Hey you, you know what to do. :-)\n");
-					centi_second = 0;
-				}
-			}
-				
 	}
 	return 0;      
-    }
 }
     
