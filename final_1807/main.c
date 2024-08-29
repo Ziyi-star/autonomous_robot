@@ -44,7 +44,6 @@ int main(void) {
 
     srr_t last_model_state = *regmdl;
     
-    
     int left;
     int right;
     int middle;
@@ -54,9 +53,6 @@ int main(void) {
     char message = 0;
     char str_buffer [50];
     char state = 0;
-
-	// Enable Watchdog Timer to reset after 4 seconds if not reset
-    wdt_enable(WDTO_4S);
 
     while (1) {
 
@@ -82,23 +78,30 @@ int main(void) {
 			state = 'S';
 			USART_print("Here I am once more, going down the only round I've ever known...\n"); 
 			count_time = 1;
+		
+		} 
 		//'P' gedrückt
-		} else if(message == 'P'){
-		// vorher Pause 'P' mode, dann wechsel zu fahren 'S' mode
+		if(message == 'P'){
 			if(state == 'P'){
 				state = 'S';
-			//vorher fahren 'S' mode, dann wechsel zu Pause 'P' mode
-			}else if(state == 'S'){
-				state = 'P';
+				USART_print("Resuming operation...\n");
 			}
+			if(state == 'S'){
+				state = 'P';
+				USART_print("Pausing operation...\n");
+			}
+		
+		} 
 		//'T' gedrückt
-		} else if(message == 'T'){
+		if(message == 'T'){
 			// vorher fahren 'S' mode, dann wechsel zu trabble 'T' mode
 			if(state == 'S'){
 				state = 'T';
 			}
+		
+		} 
 		// 'H' gedrückt
-		} else if(message == 'H'){
+		if(message == 'H'){
 			// vorher trabble 'T' mode, 
 			if(state == 'T'){
 				state = 'H';
@@ -159,7 +162,7 @@ int main(void) {
 					USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
 					}
 					if (currentLap == 4) {
-						//TODO: reset
+						//TODO: reset?
 						sprintf(str_buffer, " Finally finished , It's over and done now, after #%d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", time_counter);
 						USART_print(str_buffer);
 						stop();
@@ -193,18 +196,13 @@ int main(void) {
 		}
 		
 		if (state == 'P'){
-			isPaused = !isPaused;
-				if (isPaused) {
-					stop();  
-					run_led_sequence(regmdl);
-					if (second){
-						USART_print("Pause\n");
-						second = 0;
-					}
-				}else {
-					break;
-				}
+			stop();  
+			run_led_sequence(regmdl);
+			if (second){
+				USART_print("Pause\n");
+				second = 0;
 			}
+		}
 			
 		if (state == 'T'){
 			// Store current ADC values for 'H'

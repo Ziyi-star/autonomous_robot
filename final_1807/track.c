@@ -119,32 +119,11 @@ void rotate_clockwise() {
     // links BACKWARD 1
     PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
     // RIGHT FORWARD 1
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
+    PORTB &= ~(1 << PIN_IN4_FORWARD_RIGHT);
     // Right BACKWARD 0
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
 
-void check_adc_rotate() {
-    uint16_t currentAdc0, currentAdc1, currentAdc2;
-    // Loop until the break condition is met
-    while (1) {
-        // Read current ADC values
-        currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
-        currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
-        currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
-
-        // Check if current ADC values are close enough to initial values
-        if (abs(currentAdc0 - initialAdcValues.adc0) < 30 &&
-            abs(currentAdc1 - initialAdcValues.adc1) < 30 &&
-            abs(currentAdc2 - initialAdcValues.adc2) < 30) {
-            stop();  // Stop the robot
-            state == 'S';
-        } else {
-            rotate_clockwise();  // Continue rotating
-            _delay_ms(100);  // Delay to allow for ADC reading stabilization
-        }
-    } 
-}
 
 
 
