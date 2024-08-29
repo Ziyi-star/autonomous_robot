@@ -1,8 +1,5 @@
 #include "track.h"
 
- 
-
-
 void big_right(){
     //links
     setDutyCycle(PD5, 255);
@@ -122,10 +119,11 @@ void rotate_clockwise() {
     // links BACKWARD 1
     PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
     // RIGHT FORWARD 1
-    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
+    PORTB &= ~(1 << PIN_IN4_FORWARD_RIGHT);
     // Right BACKWARD 0
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
+
 
 
 
