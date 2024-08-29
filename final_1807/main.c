@@ -163,7 +163,6 @@ int main(void) {
 						sprintf(str_buffer, " Finally finished , It's over and done now, after #%d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", time_counter);
 						USART_print(str_buffer);
 						stop();
-
 						_delay_ms(5000);
 						wdt_enable(WDTO_15MS);
 						// Loop forever, watchdog will reset the microcontroller
@@ -192,8 +191,7 @@ int main(void) {
 			}
 				
 		}
-
-		//
+		
 		if (state == 'P'){
 			isPaused = !isPaused;
 				if (isPaused) {
