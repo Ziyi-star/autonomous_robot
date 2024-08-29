@@ -82,8 +82,6 @@ int main(void) {
 		
 		message = USART_receiveByte();
 		
-		
-		 
         adcval0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
         adcval1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
         adcval2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
@@ -94,22 +92,30 @@ int main(void) {
         
         update_model(regmdl, left, middle, right);
 		
-			//STARTFIELD
+		//STARTFIELD
 		if(message == 'S' && left && middle && right && state != 'S'){
+			//einmalig Mode ändern zu 'S'
 			state = 'S';
 			USART_print("Here I am once more, going down the only round I've ever known...\n"); 
 			count_time = 1;
+		//'P' gedrückt
 		} else if(message == 'P'){
+				// vorher Pause 'P' mode, dann wechsel zu fahren 'S' mode
 				if(state == 'P'){
 					state = 'S';
+				//vorher fahren 'S' mode, dann wechsel zu Pause 'P' mode
 				}else if(state == 'S'){
 					state = 'P';
 				}
+		//'T' gedrückt
 		} else if(message == 'T'){
+			// vorher fahren 'S' mode, dann wechsel zu trabble 'T' mode
 				if(state == 'S'){
 					state = 'T';
 				}
+		// 'H' gedrückt
 		} else if(message == 'H'){
+			// vorher trabble 'T' mode, 
 				if(state == 'T'){
 					state = 'H';
 				}
