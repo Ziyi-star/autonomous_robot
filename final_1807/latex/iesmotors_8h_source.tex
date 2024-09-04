@@ -1,0 +1,104 @@
+\hypertarget{iesmotors_8h_source}{}\doxysection{iesmotors.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Well, include-\/guards ... when do you need them?}}
+\DoxyCodeLine{2 \textcolor{comment}{// Sooner (not: later) you will need them.}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// However, clean this code up a bit, prettify it}}
+\DoxyCodeLine{5 \textcolor{comment}{// extensively. It will give a good impression to}}
+\DoxyCodeLine{6 \textcolor{comment}{// your work when you deliver high-\/quality-\/code}}
+\DoxyCodeLine{7 \textcolor{comment}{// without crap. (Remove any such instruction etc.)}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{/*}}
+\DoxyCodeLine{10 \textcolor{comment}{ .\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_                       \_\_           .\_.}}
+\DoxyCodeLine{11 \textcolor{comment}{|   \(\backslash\)\_   \_\_\_\_\_//   \_\_\_\_\_/ \_\_\_\_\_\_\_  \_\_\_\_   \_\_\_\_ |  | \_\_  \_\_\_\_\_| |}}
+\DoxyCodeLine{12 \textcolor{comment}{|   ||    \_\_)\_ \(\backslash\)\_\_\_\_\_  \(\backslash\)  \(\backslash\)\_  \_\_ \(\backslash\)/  \_ \(\backslash\)\_/ \_\_\_\(\backslash\)|  |/ / /  \_\_\_/ |}}
+\DoxyCodeLine{13 \textcolor{comment}{|   ||        \(\backslash\)/        \(\backslash\)  |  | \(\backslash\)(  <\_> )  \(\backslash\)\_\_\_|    <  \(\backslash\)\_\_\_ \(\backslash\) \(\backslash\)|}}
+\DoxyCodeLine{14 \textcolor{comment}{|\_\_\_/\_\_\_\_\_\_\_  /\_\_\_\_\_\_\_  /  |\_\_|   \(\backslash\)\_\_\_\_/ \(\backslash\)\_\_\_  >\_\_|\_ \(\backslash\)/\_\_\_\_  >\_\_}}
+\DoxyCodeLine{15 \textcolor{comment}{            \(\backslash\)/        \(\backslash\)/                     \(\backslash\)/     \(\backslash\)/     \(\backslash\)/ \(\backslash\)/}}
+\DoxyCodeLine{16 \textcolor{comment}{*/}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#ifndef IESMOTORS}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define IESMOTORS}}
+\DoxyCodeLine{20 \textcolor{comment}{// hae?}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <avr/io.h>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <avr/interrupt.h>}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keywordtype}{void} setupTimer0(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{25 \textcolor{comment}{// blubb}}
+\DoxyCodeLine{26 \textcolor{keywordtype}{void} setDutyCycle(uint8\_t pin, uint8\_t value);}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{/*}}
+\DoxyCodeLine{91 \textcolor{comment}{ .\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_                       \_\_           .\_.}}
+\DoxyCodeLine{92 \textcolor{comment}{|   \(\backslash\)\_   \_\_\_\_\_//   \_\_\_\_\_/ \_\_\_\_\_\_\_  \_\_\_\_   \_\_\_\_ |  | \_\_  \_\_\_\_\_| |}}
+\DoxyCodeLine{93 \textcolor{comment}{|   ||    \_\_)\_ \(\backslash\)\_\_\_\_\_  \(\backslash\)  \(\backslash\)\_  \_\_ \(\backslash\)/  \_ \(\backslash\)\_/ \_\_\_\(\backslash\)|  |/ / /  \_\_\_/ |}}
+\DoxyCodeLine{94 \textcolor{comment}{|   ||        \(\backslash\)/        \(\backslash\)  |  | \(\backslash\)(  <\_> )  \(\backslash\)\_\_\_|    <  \(\backslash\)\_\_\_ \(\backslash\) \(\backslash\)|}}
+\DoxyCodeLine{95 \textcolor{comment}{|\_\_\_/\_\_\_\_\_\_\_  /\_\_\_\_\_\_\_  /  |\_\_|   \(\backslash\)\_\_\_\_/ \(\backslash\)\_\_\_  >\_\_|\_ \(\backslash\)/\_\_\_\_  >\_\_}}
+\DoxyCodeLine{96 \textcolor{comment}{            \(\backslash\)/        \(\backslash\)/                     \(\backslash\)/     \(\backslash\)/     \(\backslash\)/ \(\backslash\)/}}
+\DoxyCodeLine{97 \textcolor{comment}{*/}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 \textcolor{comment}{// blubb}}
+
+\end{DoxyCode}

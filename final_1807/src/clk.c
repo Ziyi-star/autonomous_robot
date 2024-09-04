@@ -1,3 +1,19 @@
+/**
+ * @file clk.c
+ * @author Ziyi LIu
+ * @date 04.09.2024
+ * @brief Timer and Clock Management for Microcontroller
+ *
+ * @details This file contains the implementation of functions and interrupt service routines
+ *          (ISRs) for managing time-based events on a microcontroller. It handles periodic
+ *          interrupts to maintain software counters and execute time-critical operations.
+ *          The main functionality includes incrementing counters at different rates, 1HZ, 2HZ, 10HZ
+ *          indicating time units such as milliseconds, centiseconds, half-seconds, and seconds,
+ *          and triggering actions based on these time intervals.        
+ */
+
+
+
 #include "clk.h"
 
 uint16_t cnt_t = 0;
