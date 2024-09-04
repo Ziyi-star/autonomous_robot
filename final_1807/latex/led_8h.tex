@@ -1,0 +1,191 @@
+\hypertarget{led_8h}{}\doxysection{inc/led.h File Reference}
+\label{led_8h}\index{inc/led.h@{inc/led.h}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}iesusart.\+h\char`\"{}}\newline
+Include dependency graph for led.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{led_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{led_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{led_8h_a6a83d5fe0f2351e56e45555b5277b98d}\label{led_8h_a6a83d5fe0f2351e56e45555b5277b98d}} 
+\#define {\bfseries DR\+\_\+\+LF\+\_\+R}~DDRC
+\item 
+\mbox{\Hypertarget{led_8h_a07f2dd34e4b283a7206c172aed267ae5}\label{led_8h_a07f2dd34e4b283a7206c172aed267ae5}} 
+\#define {\bfseries DP\+\_\+\+LF\+\_\+R}~DDC0
+\item 
+\mbox{\Hypertarget{led_8h_a48b6c899337f2b425b4cf9c2643ee7ad}\label{led_8h_a48b6c899337f2b425b4cf9c2643ee7ad}} 
+\#define {\bfseries IR\+\_\+\+LF\+\_\+R}~PINC
+\item 
+\mbox{\Hypertarget{led_8h_aa2f118a350a846efad513437c2b86052}\label{led_8h_aa2f118a350a846efad513437c2b86052}} 
+\#define {\bfseries IP\+\_\+\+LF\+\_\+R}~PINC0
+\item 
+\mbox{\Hypertarget{led_8h_ac94f115d3eaf55a79936fc1843d4e41a}\label{led_8h_ac94f115d3eaf55a79936fc1843d4e41a}} 
+\#define {\bfseries DR\+\_\+\+LF\+\_\+M}~DDRC
+\item 
+\mbox{\Hypertarget{led_8h_adb38c0d8800f4ef5890f2910e4aab24b}\label{led_8h_adb38c0d8800f4ef5890f2910e4aab24b}} 
+\#define {\bfseries DP\+\_\+\+LF\+\_\+M}~DDC1
+\item 
+\mbox{\Hypertarget{led_8h_a741e8cc001395baa9b9cebd0662b092c}\label{led_8h_a741e8cc001395baa9b9cebd0662b092c}} 
+\#define {\bfseries IR\+\_\+\+LF\+\_\+M}~PINC
+\item 
+\mbox{\Hypertarget{led_8h_a0bae252ea1ffd64336215efa28a972cb}\label{led_8h_a0bae252ea1ffd64336215efa28a972cb}} 
+\#define {\bfseries IP\+\_\+\+LF\+\_\+M}~PINC1
+\item 
+\mbox{\Hypertarget{led_8h_a03da7cc138052ba474e06f03c772d7ae}\label{led_8h_a03da7cc138052ba474e06f03c772d7ae}} 
+\#define {\bfseries DR\+\_\+\+LF\+\_\+L}~DDRC
+\item 
+\mbox{\Hypertarget{led_8h_acc452e04c1955a9e9fd4365baa2981ba}\label{led_8h_acc452e04c1955a9e9fd4365baa2981ba}} 
+\#define {\bfseries DP\+\_\+\+LF\+\_\+L}~DDC2
+\item 
+\mbox{\Hypertarget{led_8h_ab2345f316dd84eb979dda385c831070a}\label{led_8h_ab2345f316dd84eb979dda385c831070a}} 
+\#define {\bfseries IR\+\_\+\+LF\+\_\+L}~PINC
+\item 
+\mbox{\Hypertarget{led_8h_a93939035856234865d2d9cdd9fe846f1}\label{led_8h_a93939035856234865d2d9cdd9fe846f1}} 
+\#define {\bfseries IP\+\_\+\+LF\+\_\+L}~PINC2
+\item 
+\mbox{\Hypertarget{led_8h_a16c7c0a942997ae7c1583cc94a978709}\label{led_8h_a16c7c0a942997ae7c1583cc94a978709}} 
+\#define {\bfseries REGWIDTH}~3
+\item 
+\mbox{\Hypertarget{led_8h_a0995bdba38a3c2f9815cb8240778ed20}\label{led_8h_a0995bdba38a3c2f9815cb8240778ed20}} 
+\#define {\bfseries DR\+\_\+\+SR\+\_\+\+CLK}~DDRD
+\item 
+\mbox{\Hypertarget{led_8h_aa85606f821423e4c0bf7c14dc0b4c944}\label{led_8h_aa85606f821423e4c0bf7c14dc0b4c944}} 
+\#define {\bfseries DP\+\_\+\+SR\+\_\+\+CLK}~DDD4
+\item 
+\mbox{\Hypertarget{led_8h_a5963183ebda4a2eaf324c4560b5bf9ea}\label{led_8h_a5963183ebda4a2eaf324c4560b5bf9ea}} 
+\#define {\bfseries OR\+\_\+\+SR\+\_\+\+CLK}~PORTD
+\item 
+\mbox{\Hypertarget{led_8h_a517116c0dea73ad75320f5cbf5094b8e}\label{led_8h_a517116c0dea73ad75320f5cbf5094b8e}} 
+\#define {\bfseries OP\+\_\+\+SR\+\_\+\+CLK}~PORTD4
+\item 
+\mbox{\Hypertarget{led_8h_a997fa45c4e173ff63e1c358e35d22107}\label{led_8h_a997fa45c4e173ff63e1c358e35d22107}} 
+\#define {\bfseries DR\+\_\+\+SR\+\_\+\+DATA}~DDRB
+\item 
+\mbox{\Hypertarget{led_8h_abb45f53dddb64aa6fb368c166089c85b}\label{led_8h_abb45f53dddb64aa6fb368c166089c85b}} 
+\#define {\bfseries DP\+\_\+\+SR\+\_\+\+DATA}~DDB2
+\item 
+\mbox{\Hypertarget{led_8h_aece24b956e7d032d210a9447f0935443}\label{led_8h_aece24b956e7d032d210a9447f0935443}} 
+\#define {\bfseries OR\+\_\+\+SR\+\_\+\+DATA}~PORTB
+\item 
+\mbox{\Hypertarget{led_8h_a3bb86c3e4534186c1dba328e1a156336}\label{led_8h_a3bb86c3e4534186c1dba328e1a156336}} 
+\#define {\bfseries OP\+\_\+\+SR\+\_\+\+DATA}~PORTB2
+\item 
+\mbox{\Hypertarget{led_8h_a3fdc6562ac053fad9cf3cf14581e430c}\label{led_8h_a3fdc6562ac053fad9cf3cf14581e430c}} 
+\#define {\bfseries SR\+\_\+\+LED\+\_\+\+YELLOW}~2
+\item 
+\mbox{\Hypertarget{led_8h_a966c159047e1e0a234d3af7980d70747}\label{led_8h_a966c159047e1e0a234d3af7980d70747}} 
+\#define {\bfseries SR\+\_\+\+LED\+\_\+\+GREEN}~1
+\item 
+\mbox{\Hypertarget{led_8h_a8937138843acd6a5d5491f6b03626f98}\label{led_8h_a8937138843acd6a5d5491f6b03626f98}} 
+\#define {\bfseries SR\+\_\+\+LED\+\_\+\+BLUE}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{led_8h_af6228bb9e9cb744dd2c8c213c13e27ac}\label{led_8h_af6228bb9e9cb744dd2c8c213c13e27ac}} 
+typedef unsigned char {\bfseries srr\+\_\+t}
+\item 
+\mbox{\Hypertarget{led_8h_a5f92e155180b17519107e50334b21839}\label{led_8h_a5f92e155180b17519107e50334b21839}} 
+typedef unsigned char {\bfseries cntv8\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{led_8h_aed430d4241a041f1420ab77216321e67}{clk}} ()
+\item 
+void \mbox{\hyperlink{led_8h_a8e84afaa424343551f99b9ef4bc8217f}{update\+\_\+hardware}} (srr\+\_\+t $\ast$regmdl)
+\item 
+void \mbox{\hyperlink{led_8h_ac82a5465fec9f1113025a5940f065a6b}{update\+\_\+model}} (srr\+\_\+t $\ast$regmdl, int left, int middle, int right)
+\item 
+void \mbox{\hyperlink{led_8h_a92d6c5bd8b88ef6f17a5430702563a47}{clear}} (srr\+\_\+t $\ast$regmdl)
+\item 
+void \mbox{\hyperlink{led_8h_a550789104d08d91d49ba3c43fc08682a}{setup\+\_\+ddr\+\_\+all}} ()
+\item 
+void \mbox{\hyperlink{led_8h_ad92e1d65a1d3b552cc1553efe00d815b}{run\+\_\+led\+\_\+sequence}} (srr\+\_\+t $\ast$regmdl)
+\begin{DoxyCompactList}\small\item\em Runs a sequence of LED operations based on the shift register model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ziyi Liu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+09.\+2024 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{led_8h_a92d6c5bd8b88ef6f17a5430702563a47}\label{led_8h_a92d6c5bd8b88ef6f17a5430702563a47}} 
+\index{led.h@{led.h}!clear@{clear}}
+\index{clear@{clear}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void clear (\begin{DoxyParamCaption}\item[{srr\+\_\+t $\ast$}]{regmdl }\end{DoxyParamCaption})}
+
+Clears the in-\/memory-\/representation (the \char`\"{}model\char`\"{}) of the robot\textquotesingle{}s shift-\/register. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{led_8h_a92d6c5bd8b88ef6f17a5430702563a47_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{led_8h_aed430d4241a041f1420ab77216321e67}\label{led_8h_aed430d4241a041f1420ab77216321e67}} 
+\index{led.h@{led.h}!clk@{clk}}
+\index{clk@{clk}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{clk()}{clk()}}
+{\footnotesize\ttfamily void clk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clocks the real hardware -- whenever this is called, a rising edge on PD4 is generated. \mbox{\Hypertarget{led_8h_ad92e1d65a1d3b552cc1553efe00d815b}\label{led_8h_ad92e1d65a1d3b552cc1553efe00d815b}} 
+\index{led.h@{led.h}!run\_led\_sequence@{run\_led\_sequence}}
+\index{run\_led\_sequence@{run\_led\_sequence}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{run\_led\_sequence()}{run\_led\_sequence()}}
+{\footnotesize\ttfamily void run\+\_\+led\+\_\+sequence (\begin{DoxyParamCaption}\item[{srr\+\_\+t $\ast$}]{regmdl }\end{DoxyParamCaption})}
+
+
+
+Runs a sequence of LED operations based on the shift register model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regmdl} & Pointer to the shift register model.\\
+\hline
+\end{DoxyParams}
+Function to run LED sequence like a running light. \mbox{\Hypertarget{led_8h_a550789104d08d91d49ba3c43fc08682a}\label{led_8h_a550789104d08d91d49ba3c43fc08682a}} 
+\index{led.h@{led.h}!setup\_ddr\_all@{setup\_ddr\_all}}
+\index{setup\_ddr\_all@{setup\_ddr\_all}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{setup\_ddr\_all()}{setup\_ddr\_all()}}
+{\footnotesize\ttfamily void setup\+\_\+ddr\+\_\+all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets data directions. \mbox{\Hypertarget{led_8h_a8e84afaa424343551f99b9ef4bc8217f}\label{led_8h_a8e84afaa424343551f99b9ef4bc8217f}} 
+\index{led.h@{led.h}!update\_hardware@{update\_hardware}}
+\index{update\_hardware@{update\_hardware}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{update\_hardware()}{update\_hardware()}}
+{\footnotesize\ttfamily void update\+\_\+hardware (\begin{DoxyParamCaption}\item[{srr\+\_\+t $\ast$}]{regmdl }\end{DoxyParamCaption})}
+
+Writes the in-\/memory-\/representation (the \char`\"{}model\char`\"{}) of the robot\textquotesingle{}s shift-\/register to the real hardware. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{led_8h_a8e84afaa424343551f99b9ef4bc8217f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{led_8h_ac82a5465fec9f1113025a5940f065a6b}\label{led_8h_ac82a5465fec9f1113025a5940f065a6b}} 
+\index{led.h@{led.h}!update\_model@{update\_model}}
+\index{update\_model@{update\_model}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{update\_model()}{update\_model()}}
+{\footnotesize\ttfamily void update\+\_\+model (\begin{DoxyParamCaption}\item[{srr\+\_\+t $\ast$}]{regmdl,  }\item[{int}]{left,  }\item[{int}]{middle,  }\item[{int}]{right }\end{DoxyParamCaption})}
+
+Updates the model (memory), that represents the robot\textquotesingle{}s shift-\/register. 

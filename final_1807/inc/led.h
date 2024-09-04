@@ -1,3 +1,15 @@
+/**
+ * @file led.h
+ * @author Ziyi Liu
+ * @date 04.09.2024
+ * @file LED.h
+ * @brief Definitions for LED control interfaces on a robot.
+ *
+ * @details This header file contains macros and function declarations for controlling LEDs and reading
+ * line follower (LF) sensors on a robot. The file also defines types and functions for managing shift
+ * register states used in the LED control logic.
+ */
+
 #ifndef LED_h
 #define LED_h
 
@@ -57,6 +69,10 @@ void clear(srr_t *regmdl);
 
 void setup_ddr_all();
 
+/**
+ * @brief Runs a sequence of LED operations based on the shift register model.
+ * @param regmdl Pointer to the shift register model.
+ */
 void run_led_sequence(srr_t *regmdl);
 
 #endif

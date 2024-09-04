@@ -1,0 +1,12 @@
+<map id="inc/iesusart.h" name="inc/iesusart.h">
+<area shape="rect" id="node1" title="Basic serial communication via USART for ATMEGA328." alt="" coords="179,5,289,32"/>
+<area shape="rect" id="node2" href="$clk_8h.html" title="Timer and Clock Management for Microcontroller." alt="" coords="304,80,380,107"/>
+<area shape="rect" id="node3" href="$main_8h.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="106,155,197,181"/>
+<area shape="rect" id="node6" href="$led_8h.html" title=" " alt="" coords="37,80,114,107"/>
+<area shape="rect" id="node8" href="$track_8h.html" title="Motor control definitions and functions for robotic movements." alt="" coords="189,80,279,107"/>
+<area shape="rect" id="node10" href="$iesusart_8c.html" title="Basic serial communication via USART for ATMEGA328." alt="" coords="404,80,512,107"/>
+<area shape="rect" id="node5" href="$clk_8c.html" title="Timer and Clock Management for Microcontroller." alt="" coords="335,155,410,181"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="107,229,196,256"/>
+<area shape="rect" id="node7" href="$led_8c.html" title="LED Control for Robotic Shift Register Interface." alt="" coords="5,155,81,181"/>
+<area shape="rect" id="node9" href="$track_8c.html" title="Motor Control Functions for Robotic Navigation." alt="" coords="221,155,311,181"/>
+</map>

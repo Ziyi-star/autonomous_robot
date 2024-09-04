@@ -1,3 +1,18 @@
+/**
+ * @file led.c
+ * @author Ziyi LIu
+ * @date 04.09.2024
+ * @brief LED Control for Robotic Shift Register Interface
+ *
+ * @details This file includes functions that interface with the robot's shift register to control
+ *          LEDs based on specific patterns and timing. Functions provide mechanisms to clock the
+ *          hardware, update LED states both in memory and on the actual hardware, clear settings,
+ *          and execute LED sequences to represent various states or signals visually.
+ * 
+ *  
+ */
+
+
 #include "led.h"
 
 /**

@@ -1,3 +1,17 @@
+/**
+ * @file track.c
+ * @author Ziyi Liu
+ * @date 04.09.2024
+ * @brief Motor Control Functions for Robotic Navigation
+ *
+* @details This file contains functions to control the movement of a robot through its motor-driven wheels. 
+ *          Functions in this file allow for precise movement control, including sharp turns, slight adjustments,
+ *          and straightforward motion. The control logic includes speed adjustment, direction control, and
+ *          stopping mechanisms, integrating directly with the robot's hardware interface.
+ */
+
+
+
 #include "track.h"
 
 void big_right(){

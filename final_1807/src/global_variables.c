@@ -1,3 +1,15 @@
+/**
+ * @file global_variables.c
+ * @author Ziyi Liu
+ * @date 04.09.2024
+ * @brief Global variables for timing and race control.
+ *
+ * @details This file defines global variables used across the project for managing timing functions 
+ *          and race state in a robotic navigation system. These variables facilitate synchronization 
+ *          and state management throughout various components of the system.
+ */
+
+
 #include "global_variables.h"
 
 //for timer

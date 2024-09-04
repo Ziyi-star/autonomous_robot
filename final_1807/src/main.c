@@ -1,6 +1,37 @@
+/**
+ * @file main.c
+ * @author Ziyi LIu
+ * @date 04.09.2024
+ *
+ * @brief Main Control Loop for Autonomous Robotic Navigation
+ * 
+ * @details This file contains the main function which serves as the central control hub for an autonomous robot.
+ *          It integrates sensor data processing, state management, and command execution to handle different
+ *          operational modes such as navigation, obstacle detection, and system diagnostics. The robot's behavior
+ *          is influenced by ADC values to dynamically adjust its course and by UART messages to switch between
+ *          different operational states.
+ * 
+ *  
+ */
+
+
 #include "main.h"
 
-// Define a structure to hold the ADC values
+/**
+ * @struct ADCValues
+ * @brief Holds ADC (Analog-to-Digital Converter) values from multiple channels.
+ *
+ * @details This structure is designed to store the digital values converted from analog signals
+ * on multiple ADC channels. It can be used for easy access and manipulation of these values 
+ * within the application.
+ *
+ * @var ADCValues::adc0
+ * uint16_t adc0: ADC value from channel 0.
+ * @var ADCValues::adc1
+ * uint16_t adc1: ADC value from channel 1.
+ * @var ADCValues::adc2
+ * uint16_t adc2: ADC value from channel 2.
+ */
 typedef struct {
     uint16_t adc0;
     uint16_t adc1;

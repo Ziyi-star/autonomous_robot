@@ -1,0 +1,6 @@
+<map id="inc/clk.h" name="inc/clk.h">
+<area shape="rect" id="node1" title="Timer and Clock Management for Microcontroller." alt="" coords="66,5,142,32"/>
+<area shape="rect" id="node2" href="$main_8h.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node4" href="$clk_8c.html" title="Timer and Clock Management for Microcontroller." alt="" coords="120,80,195,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="6,155,95,181"/>
+</map>
