@@ -16,7 +16,6 @@
 
 #include "clk.h"
 
-uint16_t cnt_t = 0;
 ISR(TIMER1_COMPA_vect) {
   cnt+=1;
   //0,01 sekunde
@@ -36,11 +35,7 @@ ISR(TIMER1_COMPA_vect) {
   if (cnt == 62500) {
 	  cnt = 0;
 	  second = 1;
-  }
-  
-  if (cnt_t == 62500) {
-	  cnt_t = 0;
-	  if(count_time){
+    if(count_time){
 		time_counter+=1;
 		}
   }
