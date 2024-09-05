@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Autonomous Robot Control System: inc/global_variables.h File Reference</title>
+<title>Autonomous Line-Following Robot: src/config.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Autonomous Robot Control System
+   <div id="projectname">Autonomous Line-Following Robot
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('global__variables_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('config_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -91,81 +91,59 @@ $(document).ready(function(){initNavTree('global__variables_8h.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">global_variables.h File Reference</div></div>
+  <div class="headertitle"><div class="title">config.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Global variables for timing and race management.  
+<p>Global variables for timing and race control.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;time.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;config.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for global_variables.h:</div>
+Include dependency graph for config.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="global__variables_8h__incl.png" border="0" usemap="#ainc_2global__variables_8h" alt=""/></div>
-<map name="ainc_2global__variables_8h" id="ainc_2global__variables_8h">
-<area shape="rect" title="Global variables for timing and race management." alt="" coords="5,5,169,32"/>
-<area shape="rect" title=" " alt="" coords="55,80,119,107"/>
+<div class="center"><img src="config_8c__incl.png" border="0" usemap="#asrc_2config_8c" alt=""/></div>
+<map name="asrc_2config_8c" id="asrc_2config_8c">
+<area shape="rect" title="Global variables for timing and race control." alt="" coords="5,5,101,32"/>
+<area shape="rect" href="config_8h_source.html" title=" " alt="" coords="16,80,91,107"/>
+<area shape="rect" title=" " alt="" coords="21,155,85,181"/>
 </map>
 </div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="global__variables_8h__dep__incl.png" border="0" usemap="#ainc_2global__variables_8hdep" alt=""/></div>
-<map name="ainc_2global__variables_8hdep" id="ainc_2global__variables_8hdep">
-<area shape="rect" title="Global variables for timing and race management." alt="" coords="45,5,209,32"/>
-<area shape="rect" href="clk_8h.html" title="Timer and Clock Management for Microcontroller." alt="" coords="89,80,165,107"/>
-<area shape="rect" href="main_8h.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="5,155,96,181"/>
-<area shape="rect" href="global__variables_8c.html" title="Global variables for timing and race control." alt="" coords="189,80,352,107"/>
-<area shape="rect" href="clk_8c.html" title="Timer and Clock Management for Microcontroller." alt="" coords="120,155,195,181"/>
-<area shape="rect" href="main_8c.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="6,229,95,256"/>
-</map>
-</div>
-</div>
-<p><a href="global__variables_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ae1d905c6ac1a0c9b96dca16153917334"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#ae1d905c6ac1a0c9b96dca16153917334">cnt</a></td></tr>
+<tr class="memitem:ae1d905c6ac1a0c9b96dca16153917334"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#ae1d905c6ac1a0c9b96dca16153917334">cnt</a> = 0</td></tr>
 <tr class="separator:ae1d905c6ac1a0c9b96dca16153917334"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e99a2ec44cbad2e05795e5318622cdb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#a3e99a2ec44cbad2e05795e5318622cdb">m_second</a></td></tr>
+<tr class="memitem:a3e99a2ec44cbad2e05795e5318622cdb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#a3e99a2ec44cbad2e05795e5318622cdb">m_second</a> = 0</td></tr>
 <tr class="separator:a3e99a2ec44cbad2e05795e5318622cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4fd1fb25e9579b6c2447c2753362ad9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#aa4fd1fb25e9579b6c2447c2753362ad9">centi_second</a></td></tr>
+<tr class="memitem:aa4fd1fb25e9579b6c2447c2753362ad9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#aa4fd1fb25e9579b6c2447c2753362ad9">centi_second</a> = 0</td></tr>
 <tr class="separator:aa4fd1fb25e9579b6c2447c2753362ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4c0909f9c1c6dcf034b6cb0bbcb6a5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#a0d4c0909f9c1c6dcf034b6cb0bbcb6a5">half_second</a></td></tr>
+<tr class="memitem:a0d4c0909f9c1c6dcf034b6cb0bbcb6a5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#a0d4c0909f9c1c6dcf034b6cb0bbcb6a5">half_second</a> = 0</td></tr>
 <tr class="separator:a0d4c0909f9c1c6dcf034b6cb0bbcb6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcf2f7896412b447806076eb99410184"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#abcf2f7896412b447806076eb99410184">second</a></td></tr>
+<tr class="memitem:abcf2f7896412b447806076eb99410184"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#abcf2f7896412b447806076eb99410184">second</a> = 0</td></tr>
 <tr class="separator:abcf2f7896412b447806076eb99410184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85f3d475f706aee6185609a7a11e4f4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#a85f3d475f706aee6185609a7a11e4f4b">currentLap</a></td></tr>
+<tr class="memitem:a85f3d475f706aee6185609a7a11e4f4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#a85f3d475f706aee6185609a7a11e4f4b">currentLap</a> = 1</td></tr>
 <tr class="separator:a85f3d475f706aee6185609a7a11e4f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b0abc9af6cfb029bdf2c7ba718c1a99"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#a0b0abc9af6cfb029bdf2c7ba718c1a99">time_counter</a></td></tr>
+<tr class="memitem:a0b0abc9af6cfb029bdf2c7ba718c1a99"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#a0b0abc9af6cfb029bdf2c7ba718c1a99">time_counter</a> = 0</td></tr>
 <tr class="separator:a0b0abc9af6cfb029bdf2c7ba718c1a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6190b0bc2f0c2018ae6698ddd4962dbf"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global__variables_8h.html#a6190b0bc2f0c2018ae6698ddd4962dbf">count_time</a></td></tr>
+<tr class="memitem:a6190b0bc2f0c2018ae6698ddd4962dbf"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8c.html#a6190b0bc2f0c2018ae6698ddd4962dbf">count_time</a> = 0</td></tr>
 <tr class="separator:a6190b0bc2f0c2018ae6698ddd4962dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Global variables for timing and race management. </p>
+<div class="textblock"><p >Global variables for timing and race control. </p>
 <dl class="section author"><dt>Author</dt><dd>Ziyi Liu </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>04.09.2024</dd></dl>
-<p>This header file declares external global variables used across multiple modules for handling timing functions and race state management in a racing application. These variables are crucial for tracking the time and state of race events. </p>
+<p>This file defines global variables used across the project for managing timing functions and race state in a robotic navigation system. These variables facilitate synchronization and state management throughout various components of the system. </p>
 </div><h2 class="groupheader">Variable Documentation</h2>
 <a id="aa4fd1fb25e9579b6c2447c2753362ad9" name="aa4fd1fb25e9579b6c2447c2753362ad9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4fd1fb25e9579b6c2447c2753362ad9">&#9670;&nbsp;</a></span>centi_second</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char centi_second</td>
+          <td class="memname">char centi_second = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Centiseconds counter. </p>
 
@@ -176,19 +154,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t cnt</td>
+          <td class="memname">uint16_t cnt = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Counter for low-level timing operations. </p>
 
@@ -199,19 +169,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char count_time</td>
+          <td class="memname">char count_time = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Flag to indicate whether to count time or not. </p>
 
@@ -222,19 +184,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int currentLap</td>
+          <td class="memname">int currentLap = 1</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Current lap number in the race. </p>
 
@@ -245,19 +199,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char half_second</td>
+          <td class="memname">char half_second = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Half-second flag, set every half second. </p>
 
@@ -268,19 +214,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t m_second</td>
+          <td class="memname">uint16_t m_second = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Milliseconds counter. </p>
 
@@ -291,19 +229,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char second</td>
+          <td class="memname">char second = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Second flag, set every second. </p>
 
@@ -314,19 +244,11 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t time_counter</td>
+          <td class="memname">uint16_t time_counter = 0</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Generic time counter for various uses. </p>
 
@@ -337,7 +259,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="global__variables_8h.html">global_variables.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="config_8c.html">config.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>

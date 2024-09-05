@@ -86,7 +86,7 @@ DOC_WATCH         = /html/index.html
 ##
 .PHONY: clean
 
-#all: compile link firmware flash documentation
+#all: compile link firmware flash doc
 all: compile link firmware 
 
 # Compile sources to object-files.
@@ -124,7 +124,7 @@ flash: firmware
 # Generates the doxygen-documentation, takes config from a "doxyfile"
 # DOC_WATCH is a file we monitor to check whether a doc-build is
 # necessary if preqrequisites are unchanged.
-documentation: $(DOC_DIR)$(DOC_WATCH)
+doc: $(DOC_DIR)$(DOC_WATCH)
 
 $(DOC_DIR)$(DOC_WATCH): $(SOURCES) $(HEADERS) $(DOC_OPTIONS)
 	@echo Generating documentation in $(DOC_DIR)!

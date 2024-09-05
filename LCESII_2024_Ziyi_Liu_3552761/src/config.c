@@ -1,5 +1,5 @@
 /**
- * @file global_variables.c
+ * @file config.c
  * @author Ziyi Liu
  * @date 04.09.2024
  * @brief Global variables for timing and race control.

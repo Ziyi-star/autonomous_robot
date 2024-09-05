@@ -60,7 +60,7 @@ After the firmware is successfully flashed:
 Documentation is generated using Doxygen in HTML format. To generate the documentation:
 
 ```bash
-make documentation
+make doc
 ```
 
 Ensure you do not submit the generated documentation folder. It should be generated after cloning the repository using the above command.
