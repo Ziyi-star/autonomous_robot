@@ -1,7 +1,3 @@
-Certainly! Below is a template for a README file tailored for your project, which involves managing a microcontroller-based autonomous robot. This README file outlines the basic project details, setup instructions, and usage details, assuming your project is a bit complex and involves software-hardware interaction.
-
----
-
 # Autonomous Robot Control System
 
 ## Project Overview
@@ -11,7 +7,7 @@ This project contains the embedded software for controlling an autonomous robot.
 - Multi-sensor data integration
 - Real-time motor control
 - Autonomous navigation algorithms
-- Watchdog timer for system stability
+- Watchdog timer for system stability & reset
 - Debugging capabilities via USART communication
 
 ## Getting Started

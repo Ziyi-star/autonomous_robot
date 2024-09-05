@@ -87,7 +87,7 @@ DOC_WATCH         = /html/index.html
 .PHONY: clean
 
 #all: compile link firmware flash documentation
-all: compile link firmware
+all: compile link firmware documentation
 
 # Compile sources to object-files.
 compile: $(OBJECTS)

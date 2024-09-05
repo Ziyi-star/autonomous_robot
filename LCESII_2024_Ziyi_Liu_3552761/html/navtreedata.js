@@ -24,9 +24,38 @@
 */
 var NAVTREE =
 [
-  [ "Ziyi Liu's Labor C Roboter Project", "index.html", [
-    [ "Home Page Documentation for Ziyi Liu's Roboterauto", "index.html", [
-      [ "Program Execution", "index.html#autotoc_md1", null ]
+  [ "Autonomous Robot Control System", "index.html", [
+    [ "Project Overview", "index.html#autotoc_md1", [
+      [ "Features", "index.html#autotoc_md2", null ]
+    ] ],
+    [ "Getting Started", "index.html#autotoc_md3", [
+      [ "Prerequisites", "index.html#autotoc_md4", null ],
+      [ "Installation", "index.html#autotoc_md5", null ],
+      [ "Configuration", "index.html#autotoc_md6", null ]
+    ] ],
+    [ "Usage", "index.html#autotoc_md7", [
+      [ "Commands", "index.html#autotoc_md8", null ]
+    ] ],
+    [ "Contributing", "index.html#autotoc_md9", null ],
+    [ "License", "index.html#autotoc_md10", null ],
+    [ "Authors", "index.html#autotoc_md11", null ],
+    [ "Acknowledgments", "index.html#autotoc_md12", null ],
+    [ "Autonomous Robot Control System", "md_readme.html", [
+      [ "Project Overview", "md_readme.html#autotoc_md15", [
+        [ "Features", "md_readme.html#autotoc_md16", null ]
+      ] ],
+      [ "Getting Started", "md_readme.html#autotoc_md17", [
+        [ "Prerequisites", "md_readme.html#autotoc_md18", null ],
+        [ "Installation", "md_readme.html#autotoc_md19", null ],
+        [ "Configuration", "md_readme.html#autotoc_md20", null ]
+      ] ],
+      [ "Usage", "md_readme.html#autotoc_md21", [
+        [ "Commands", "md_readme.html#autotoc_md22", null ]
+      ] ],
+      [ "Contributing", "md_readme.html#autotoc_md23", null ],
+      [ "License", "md_readme.html#autotoc_md24", null ],
+      [ "Authors", "md_readme.html#autotoc_md25", null ],
+      [ "Acknowledgments", "md_readme.html#autotoc_md26", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
