@@ -1,8 +1,0 @@
-<map id="create_matrix" name="create_matrix">
-<area shape="rect" id="node1" title="Allocates and creates a matrix with given input dimensions." alt="" coords="276,81,377,108"/>
-<area shape="rect" id="node2" href="$math__library_8h.html#a8d0bb4c5ca07827f450983ca8692c461" title="Reads in a matrix entered by the user." alt="" coords="121,5,211,32"/>
-<area shape="rect" id="node4" href="$math__library_8h.html#af664e1c9b535f158d5db2d2c9ae4464d" title="This functions transposes a given input matrix." alt="" coords="105,56,227,83"/>
-<area shape="rect" id="node5" href="$math__library_8h.html#a91fc23df05efbc68f4c32a5eba6ed87e" title="This functions adds two given input matrices." alt="" coords="116,107,216,133"/>
-<area shape="rect" id="node6" href="$math__library_8h.html#a7cb5a9b60ac1172db9962871b1801105" title="This functions computes the product of two given input matrices." alt="" coords="104,157,228,184"/>
-<area shape="rect" id="node3" href="$calculator_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main function for execution of scientific calculator." alt="" coords="5,81,56,108"/>
-</map>

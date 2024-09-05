@@ -1,4 +1,0 @@
-<map id="read_matrix" name="read_matrix">
-<area shape="rect" id="node1" title="Reads in a matrix entered by the user." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="node2" href="$math__library_8c.html#a0a7f25e06a8c375fa8ad4172fa0df204" title="Allocates and creates a matrix with given input dimensions." alt="" coords="144,5,245,32"/>
-</map>
