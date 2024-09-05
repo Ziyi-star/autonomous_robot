@@ -257,24 +257,37 @@ int main(void) {
 			// handle the rotation until ADC values match
 			uint16_t currentAdc0, currentAdc1, currentAdc2;
 			// Loop until the break condition is met
+			//test
+			char buffer[32];  // Adjust size as necessary
 			while (1) {
 				// Read current ADC values
 				currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
 				currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
 				currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
+			// test: Convert ADC values to strings and print
+				sprintf(buffer, "currentAdc0, %u\n", currentAdc0);
+				USART_print(buffer);
 
+				sprintf(buffer, "currentAdc1, %u\n", currentAdc1);
+				USART_print(buffer);
+
+				sprintf(buffer, "currentAdc2, %u\n", currentAdc2);
+				USART_print(buffer);
 				// Check if current ADC values are close enough to initial values
-				if (abs(currentAdc0 - initialAdcValues.adc0) < 30 &&
-					abs(currentAdc1 - initialAdcValues.adc1) < 30 &&
-					abs(currentAdc2 - initialAdcValues.adc2) < 30) {
-					stop();  // Stop the robot
-					state == 'S';
-					break;
-				} else {
+
+				// Rotate for the duration specified
+				int duration_ms = 10;
+				while (duration_ms > 0) {
+					_delay_ms(1);  // Delay in milliseconds
+					duration_ms--; // Decrement the counter
 					rotate_clockwise();  // Continue rotating
-					_delay_ms(100);  // Delay to allow for ADC reading stabilization
 				}
-			} 
+				if (currentAdc0 > 0 || currentAdc1 > 0 || currentAdc2 > 0){
+					state = 'S';
+					break;
+				}
+			}
+
 		}
 	}
 	return 0;      
