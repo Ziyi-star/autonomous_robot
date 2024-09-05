@@ -115,11 +115,9 @@ int main(void) {
 		if(message == 'P'){
 			if(state == 'P'){
 				state = 'S';
-				USART_print("Resuming operation...\n");
 			}
 			if(state == 'S'){
 				state = 'P';
-				USART_print("Pausing operation...\n");
 			}
 		
 		} 
@@ -232,6 +230,13 @@ int main(void) {
 			if (second){
 				USART_print("Pause\n");
 				second = 0;
+			}
+			while(1){
+				message = USART_receiveByte();
+				if(message=='P'){
+					state='S';
+					break;
+				}
 			}
 		}
 			
