@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @author Ziyi LIu
+ * @author Ziyi Liu
  * @date 04.09.2024
  *
  * @brief Main Control Loop for Autonomous Robotic Navigation

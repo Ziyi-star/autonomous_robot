@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "iesusart.h"
-#include "global_variables.h"
+#include "config.h"
 
 #define OR_HEARTBEAT PORTB
 #define OP_HEARTBEAT PB5

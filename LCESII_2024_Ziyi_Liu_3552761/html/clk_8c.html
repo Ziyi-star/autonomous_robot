@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Autonomous Robot Control System: src/clk.c File Reference</title>
+<title>Autonomous Line-Following Robot: src/clk.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Autonomous Robot Control System
+   <div id="projectname">Autonomous Line-Following Robot
    </div>
   </td>
  </tr>
@@ -109,9 +109,9 @@ Include dependency graph for clk.c:</div>
 <area shape="rect" title=" " alt="" coords="101,155,215,181"/>
 <area shape="rect" title=" " alt="" coords="239,155,333,181"/>
 <area shape="rect" title=" " alt="" coords="357,155,423,181"/>
-<area shape="rect" title=" " alt="" coords="538,229,602,256"/>
+<area shape="rect" title=" " alt="" coords="522,229,586,256"/>
 <area shape="rect" href="iesusart_8h.html" title="Basic serial communication via USART for ATMEGA328." alt="" coords="499,155,585,181"/>
-<area shape="rect" href="global__variables_8h.html" title="Global variables for timing and race management." alt="" coords="610,155,751,181"/>
+<area shape="rect" href="config_8h_source.html" title=" " alt="" coords="610,155,685,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -126,7 +126,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setup_heartbeat_timer
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Timer and Clock Management for Microcontroller. </p>
-<dl class="section author"><dt>Author</dt><dd>Ziyi LIu </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ziyi Liu </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>04.09.2024</dd></dl>
 <p>This file contains the implementation of functions and interrupt service routines (ISRs) for managing time-based events on a microcontroller. It handles periodic interrupts to maintain software counters and execute time-critical operations. The main functionality includes incrementing counters at different rates, 1HZ, 2HZ, 10HZ indicating time units such as milliseconds, centiseconds, half-seconds, and seconds, and triggering actions based on these time intervals. <br  />
  </p>

@@ -1,5 +1,0 @@
-<map id="USART_transmitByte" name="USART_transmitByte">
-<area shape="rect" id="node1" title="Writes a single byte to the USART transmit buffer." alt="" coords="300,5,459,32"/>
-<area shape="rect" id="node2" href="$iesusart_8c.html#ad230ae1e0f1a9cb24d547b1359d49322" title="Transmittes a string (char by char) until &#39;\0’ is reached." alt="" coords="148,5,252,32"/>
-<area shape="rect" id="node3" href="$iesusart_8c.html#ab0c0bf4a2153e3123ea575739baf8f31" title="Sets up the USART port (The USART baudrate register)" alt="" coords="5,5,100,32"/>
-</map>

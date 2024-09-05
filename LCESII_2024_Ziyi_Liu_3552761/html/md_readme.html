@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Autonomous Robot Control System: Autonomous Robot Control System</title>
+<title>Autonomous Line-Following Robot: Autonomous Line-Following Robot</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Autonomous Robot Control System
+   <div id="projectname">Autonomous Line-Following Robot
    </div>
   </td>
  </tr>
@@ -89,82 +89,79 @@ $(document).ready(function(){initNavTree('md_readme.html',''); initResizable(); 
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Autonomous Robot Control System </div></div>
+  <div class="headertitle"><div class="title">Autonomous Line-Following Robot </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md14"></a>
 Project Overview</h1>
-<p >This project contains the embedded software for controlling an autonomous robot. It features various operational modes, real-time sensor integration, motor control, and state management. This software is designed to be used on an AVR-based microcontroller, managing time-critical operations and motor control algorithms.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<p >This repository contains all the necessary software for controlling an autonomous line-following robot designed as part of the Embedded Systems Laboratory at Universität Kassel under the supervision of Herr Benjamin Herwig. The robot is programmed to navigate a line track for three rounds and perform various tasks as dictated by the project requirements.</p>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Features</h2>
 <ul>
-<li>Multi-sensor data integration</li>
-<li>Real-time motor control</li>
-<li>Autonomous navigation algorithms</li>
-<li>Watchdog timer for system stability &amp; reset</li>
-<li>Debugging capabilities via USART communication</li>
+<li>Navigates a predefined line track for three consecutive rounds.</li>
+<li>Uses line-following sensors to stay on track.</li>
+<li>Communicates its status and actions via USART.</li>
+<li>Capable of pausing, resuming navigation and Rotation based on commands.</li>
+<li>Implements a watchdog timer for automatic reset after completing its tasks.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Getting Started</h1>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Prerequisites</h2>
-<p >To use and develop this software, you will need:</p><ul>
-<li>AVR-GCC compiler</li>
-<li>AVRDUDE for programming the microcontroller</li>
-<li>An AVR-based microcontroller, preferably from the ATmega series</li>
-<li>Access to the hardware components such as motors, sensors, etc.</li>
-<li>Optional: Atmel Studio or a similar IDE for development</li>
+<ul>
+<li>AVR-GCC compiler for building the project.</li>
+<li>AVRDUDE or a similar tool for flashing the firmware to the microcontroller.</li>
+<li>An AVR microcontroller ATmega328/P, set up with necessary peripherals (motors, sensors, etc.).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Installation</h2>
 <ol type="1">
 <li><b>Clone the Repository:</b> <div class="fragment"><div class="line">git clone https://github.com/Ziyi-star/autonomous_robot.git</div>
-<div class="line">cd autonomous_robot</div>
+<div class="line">cd autonomous-robot</div>
 </div><!-- fragment --></li>
-<li><b>Set up your AVR toolchain:</b> Ensure that you have the AVR-GCC compiler and AVRDUDE installed and configured for your microcontroller.</li>
-<li><b>Build the Project:</b> Navigate to the project directory and use the provided Makefile: <div class="fragment"><div class="line">make all</div>
+<li><b>Compile the Source Code:</b> Using the provided Makefile, compile the source code: <div class="fragment"><div class="line">make all</div>
 </div><!-- fragment --></li>
-<li><b>Upload the Firmware to Your Microcontroller:</b> <div class="fragment"><div class="line">make upload</div>
+<li><b>Flash the Firmware:</b> Load the compiled firmware onto the microcontroller: <div class="fragment"><div class="line">make flash</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Configuration</h2>
-<p >Modify the <code>config.h</code> file in the project directory to suit your hardware setup, such as pin assignments, sensor types, and motor configurations.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<p >Configure your hardware setup and microcontroller settings in <code><a class="el" href="config_8h_source.html">config.h</a></code> as required to match your specific hardware.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Usage</h1>
-<p >After successfully uploading the firmware to your microcontroller:</p><ol type="1">
-<li>Power on the system.</li>
-<li>The robot will initiate its boot sequence, performing self-tests and sensor calibrations.</li>
-<li>Once the initialization is complete, the robot will enter its default operational mode.</li>
-<li>Monitor the output via USART for debug messages and status reports.</li>
-</ol>
-<h2><a class="anchor" id="autotoc_md22"></a>
-Commands</h2>
-<ul>
-<li><b>Start:</b> Command the robot to start its navigation routine.</li>
-<li><b>Stop:</b> Immediately halts all motor activity.</li>
-<li><b>Reset:</b> Manually reset the system via a connected interface or automatically through the watchdog timer setup.</li>
+<p >After the firmware is successfully flashed:</p><ul>
+<li>Place the robot at a designated start point on the track.</li>
+<li>Power on the robot.</li>
+<li>Connect to the robot via Bluetooth and open a serial connection using Cutecom or a similar program.</li>
+<li>Send commands to control the robot as specified:<ul>
+<li><b>S:</b> Start navigation.</li>
+<li><b>P:</b> Pause/resume navigation.</li>
+<li><b>T:</b> Test rotation functionality.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md23"></a>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Documentation</h1>
+<p >Documentation is generated using Doxygen in HTML format. To generate the documentation:</p>
+<div class="fragment"><div class="line">make documentation</div>
+</div><!-- fragment --><p >Ensure you do not submit the generated documentation folder. It should be generated after cloning the repository using the above command.</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
 Contributing</h1>
-<p >Contributions to this project are welcome. Please fork the repository and submit pull requests with your suggested changes.</p>
+<p >Individual contributions are welcome. Please fork the repository and submit pull requests for any enhancements.</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+Authors</h1>
+<ul>
+<li><b><a href="https://github.com/Ziyi-star/autonomous_robot.git">Ziyi Liu</a></b> - Initial work and ongoing maintenance</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md24"></a>
 License</h1>
 <p >This project is licensed under the MIT License - see the LICENSE.md file for details.</p>
 <h1><a class="anchor" id="autotoc_md25"></a>
-Authors</h1>
-<ul>
-<li><b>Ziyi Liu</b> - <em>Initial work</em> - <a href="https://github.com/Ziyi-star">Ziyi-star</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md26"></a>
 Acknowledgments</h1>
 <ul>
-<li>Hat tip to anyone whose code was used</li>
-<li>Inspiration</li>
-<li>etc.</li>
+<li>Prof. Dr. B. Sick for project requirements.</li>
+<li>Benjamin Herwig and all tutors for their guidance, support and assistance. </li>
 </ul>
-<hr  />
-<p >This README is customizable and can be expanded based on further details of your project or specific requirements you might want to highlight. Adjust the sections according to what your actual project setup demands or includes. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

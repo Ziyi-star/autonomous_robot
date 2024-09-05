@@ -1,6 +1,6 @@
 /**
  * @file clk.c
- * @author Ziyi LIu
+ * @author Ziyi Liu
  * @date 04.09.2024
  * @brief Timer and Clock Management for Microcontroller
  *

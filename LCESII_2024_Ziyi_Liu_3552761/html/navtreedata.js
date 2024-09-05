@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Autonomous Robot Control System", "index.html", [
+  [ "Autonomous Line-Following Robot", "index.html", [
     [ "Project Overview", "index.html#autotoc_md1", [
       [ "Features", "index.html#autotoc_md2", null ]
     ] ],
@@ -33,29 +33,27 @@ var NAVTREE =
       [ "Installation", "index.html#autotoc_md5", null ],
       [ "Configuration", "index.html#autotoc_md6", null ]
     ] ],
-    [ "Usage", "index.html#autotoc_md7", [
-      [ "Commands", "index.html#autotoc_md8", null ]
-    ] ],
+    [ "Usage", "index.html#autotoc_md7", null ],
+    [ "Documentation", "index.html#autotoc_md8", null ],
     [ "Contributing", "index.html#autotoc_md9", null ],
-    [ "License", "index.html#autotoc_md10", null ],
-    [ "Authors", "index.html#autotoc_md11", null ],
+    [ "Authors", "index.html#autotoc_md10", null ],
+    [ "License", "index.html#autotoc_md11", null ],
     [ "Acknowledgments", "index.html#autotoc_md12", null ],
-    [ "Autonomous Robot Control System", "md_readme.html", [
-      [ "Project Overview", "md_readme.html#autotoc_md15", [
-        [ "Features", "md_readme.html#autotoc_md16", null ]
+    [ "Autonomous Line-Following Robot", "md_readme.html", [
+      [ "Project Overview", "md_readme.html#autotoc_md14", [
+        [ "Features", "md_readme.html#autotoc_md15", null ]
       ] ],
-      [ "Getting Started", "md_readme.html#autotoc_md17", [
-        [ "Prerequisites", "md_readme.html#autotoc_md18", null ],
-        [ "Installation", "md_readme.html#autotoc_md19", null ],
-        [ "Configuration", "md_readme.html#autotoc_md20", null ]
+      [ "Getting Started", "md_readme.html#autotoc_md16", [
+        [ "Prerequisites", "md_readme.html#autotoc_md17", null ],
+        [ "Installation", "md_readme.html#autotoc_md18", null ],
+        [ "Configuration", "md_readme.html#autotoc_md19", null ]
       ] ],
-      [ "Usage", "md_readme.html#autotoc_md21", [
-        [ "Commands", "md_readme.html#autotoc_md22", null ]
-      ] ],
-      [ "Contributing", "md_readme.html#autotoc_md23", null ],
+      [ "Usage", "md_readme.html#autotoc_md20", null ],
+      [ "Documentation", "md_readme.html#autotoc_md21", null ],
+      [ "Contributing", "md_readme.html#autotoc_md22", null ],
+      [ "Authors", "md_readme.html#autotoc_md23", null ],
       [ "License", "md_readme.html#autotoc_md24", null ],
-      [ "Authors", "md_readme.html#autotoc_md25", null ],
-      [ "Acknowledgments", "md_readme.html#autotoc_md26", null ]
+      [ "Acknowledgments", "md_readme.html#autotoc_md25", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

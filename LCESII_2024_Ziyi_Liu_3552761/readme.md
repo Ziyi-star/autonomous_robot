@@ -1,74 +1,83 @@
-# Autonomous Robot Control System
+# Autonomous Line-Following Robot
 
 ## Project Overview
-This project contains the embedded software for controlling an autonomous robot. It features various operational modes, real-time sensor integration, motor control, and state management. This software is designed to be used on an AVR-based microcontroller, managing time-critical operations and motor control algorithms.
+
+This repository contains all the necessary software for controlling an autonomous line-following robot designed as part of the Embedded Systems Laboratory at Universität Kassel under the supervision of Herr Benjamin Herwig. The robot is programmed to navigate a line track for three rounds and perform various tasks as dictated by the project requirements.
 
 ### Features
-- Multi-sensor data integration
-- Real-time motor control
-- Autonomous navigation algorithms
-- Watchdog timer for system stability & reset
-- Debugging capabilities via USART communication
+
+- Navigates a predefined line track for three consecutive rounds.
+- Uses line-following sensors to stay on track.
+- Communicates its status and actions via USART.
+- Capable of pausing, resuming navigation and Rotation based on commands.
+- Implements a watchdog timer for automatic reset after completing its tasks.
 
 ## Getting Started
 
 ### Prerequisites
-To use and develop this software, you will need:
-- AVR-GCC compiler
-- AVRDUDE for programming the microcontroller
-- An AVR-based microcontroller, preferably from the ATmega series
-- Access to the hardware components such as motors, sensors, etc.
-- Optional: Atmel Studio or a similar IDE for development
+
+- AVR-GCC compiler for building the project.
+- AVRDUDE or a similar tool for flashing the firmware to the microcontroller.
+- An AVR microcontroller ATmega328/P, set up with necessary peripherals (motors, sensors, etc.).
 
 ### Installation
+
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/Ziyi-star/autonomous_robot.git
-   cd autonomous_robot
+   cd autonomous-robot
    ```
-2. **Set up your AVR toolchain:**
-   Ensure that you have the AVR-GCC compiler and AVRDUDE installed and configured for your microcontroller.
 
-3. **Build the Project:**
-   Navigate to the project directory and use the provided Makefile:
+2. **Compile the Source Code:**
+   Using the provided Makefile, compile the source code:
    ```bash
    make all
    ```
 
-4. **Upload the Firmware to Your Microcontroller:**
+3. **Flash the Firmware:**
+   Load the compiled firmware onto the microcontroller:
    ```bash
-   make upload
+   make flash
    ```
 
 ### Configuration
-Modify the `config.h` file in the project directory to suit your hardware setup, such as pin assignments, sensor types, and motor configurations.
+
+Configure your hardware setup and microcontroller settings in `config.h` as required to match your specific hardware.
 
 ## Usage
-After successfully uploading the firmware to your microcontroller:
-1. Power on the system.
-2. The robot will initiate its boot sequence, performing self-tests and sensor calibrations.
-3. Once the initialization is complete, the robot will enter its default operational mode.
-4. Monitor the output via USART for debug messages and status reports.
 
-### Commands
-- **Start:** Command the robot to start its navigation routine.
-- **Stop:** Immediately halts all motor activity.
-- **Reset:** Manually reset the system via a connected interface or automatically through the watchdog timer setup.
+After the firmware is successfully flashed:
+- Place the robot at a designated start point on the track.
+- Power on the robot.
+- Connect to the robot via Bluetooth and open a serial connection using Cutecom or a similar program.
+- Send commands to control the robot as specified:
+  - **S:** Start navigation.
+  - **P:** Pause/resume navigation.
+  - **T:** Test rotation functionality.
+
+## Documentation
+
+Documentation is generated using Doxygen in HTML format. To generate the documentation:
+
+```bash
+make documentation
+```
+
+Ensure you do not submit the generated documentation folder. It should be generated after cloning the repository using the above command.
 
 ## Contributing
-Contributions to this project are welcome. Please fork the repository and submit pull requests with your suggested changes.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+Individual contributions are welcome. Please fork the repository and submit pull requests for any enhancements.
 
 ## Authors
-- **Ziyi Liu** - *Initial work* - [Ziyi-star](https://github.com/Ziyi-star)
+
+- **[Ziyi Liu ](https://github.com/Ziyi-star/autonomous_robot.git)** - Initial work and ongoing maintenance
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Acknowledgments
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc.
 
----
-
-This README is customizable and can be expanded based on further details of your project or specific requirements you might want to highlight. Adjust the sections according to what your actual project setup demands or includes.
+- Prof. Dr. B. Sick for project  requirements.
+- Benjamin Herwig and all tutors for their guidance, support and assistance.

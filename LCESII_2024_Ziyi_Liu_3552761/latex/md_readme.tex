@@ -1,73 +1,73 @@
-\hypertarget{md_readme_autotoc_md15}{}\doxysection{Project Overview}\label{md_readme_autotoc_md15}
-This project contains the embedded software for controlling an autonomous robot. It features various operational modes, real-\/time sensor integration, motor control, and state management. This software is designed to be used on an AVR-\/based microcontroller, managing time-\/critical operations and motor control algorithms.\hypertarget{md_readme_autotoc_md16}{}\doxysubsection{Features}\label{md_readme_autotoc_md16}
+\hypertarget{md_readme_autotoc_md14}{}\doxysection{Project Overview}\label{md_readme_autotoc_md14}
+This repository contains all the necessary software for controlling an autonomous line-\/following robot designed as part of the Embedded Systems Laboratory at Universität Kassel under the supervision of Herr Benjamin Herwig. The robot is programmed to navigate a line track for three rounds and perform various tasks as dictated by the project requirements.\hypertarget{md_readme_autotoc_md15}{}\doxysubsection{Features}\label{md_readme_autotoc_md15}
 
 \begin{DoxyItemize}
-\item Multi-\/sensor data integration
-\item Real-\/time motor control
-\item Autonomous navigation algorithms
-\item Watchdog timer for system stability \& reset
-\item Debugging capabilities via USART communication
-\end{DoxyItemize}\hypertarget{md_readme_autotoc_md17}{}\doxysection{Getting Started}\label{md_readme_autotoc_md17}
-\hypertarget{md_readme_autotoc_md18}{}\doxysubsection{Prerequisites}\label{md_readme_autotoc_md18}
-To use and develop this software, you will need\+:
+\item Navigates a predefined line track for three consecutive rounds.
+\item Uses line-\/following sensors to stay on track.
+\item Communicates its status and actions via USART.
+\item Capable of pausing, resuming navigation and Rotation based on commands.
+\item Implements a watchdog timer for automatic reset after completing its tasks.
+\end{DoxyItemize}\hypertarget{md_readme_autotoc_md16}{}\doxysection{Getting Started}\label{md_readme_autotoc_md16}
+\hypertarget{md_readme_autotoc_md17}{}\doxysubsection{Prerequisites}\label{md_readme_autotoc_md17}
+
 \begin{DoxyItemize}
-\item AVR-\/\+GCC compiler
-\item AVRDUDE for programming the microcontroller
-\item An AVR-\/based microcontroller, preferably from the ATmega series
-\item Access to the hardware components such as motors, sensors, etc.
-\item Optional\+: Atmel Studio or a similar IDE for development
-\end{DoxyItemize}\hypertarget{md_readme_autotoc_md19}{}\doxysubsection{Installation}\label{md_readme_autotoc_md19}
+\item AVR-\/\+GCC compiler for building the project.
+\item AVRDUDE or a similar tool for flashing the firmware to the microcontroller.
+\item An AVR microcontroller ATmega328/P, set up with necessary peripherals (motors, sensors, etc.).
+\end{DoxyItemize}\hypertarget{md_readme_autotoc_md18}{}\doxysubsection{Installation}\label{md_readme_autotoc_md18}
 
 \begin{DoxyEnumerate}
 \item {\bfseries{Clone the Repository\+:}} 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/Ziyi-\/star/autonomous\_robot.git}
-\DoxyCodeLine{cd autonomous\_robot}
+\DoxyCodeLine{cd autonomous-\/robot}
 
 \end{DoxyCode}
 
-\item {\bfseries{Set up your AVR toolchain\+:}} Ensure that you have the AVR-\/\+GCC compiler and AVRDUDE installed and configured for your microcontroller.
-\item {\bfseries{Build the Project\+:}} Navigate to the project directory and use the provided Makefile\+: 
+\item {\bfseries{Compile the Source Code\+:}} Using the provided Makefile, compile the source code\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{make all}
 
 \end{DoxyCode}
 
-\item {\bfseries{Upload the Firmware to Your Microcontroller\+:}} 
+\item {\bfseries{Flash the Firmware\+:}} Load the compiled firmware onto the microcontroller\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{make upload}
+\DoxyCodeLine{make flash}
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{md_readme_autotoc_md20}{}\doxysubsection{Configuration}\label{md_readme_autotoc_md20}
-Modify the {\ttfamily config.\+h} file in the project directory to suit your hardware setup, such as pin assignments, sensor types, and motor configurations.\hypertarget{md_readme_autotoc_md21}{}\doxysection{Usage}\label{md_readme_autotoc_md21}
-After successfully uploading the firmware to your microcontroller\+:
-\begin{DoxyEnumerate}
-\item Power on the system.
-\item The robot will initiate its boot sequence, performing self-\/tests and sensor calibrations.
-\item Once the initialization is complete, the robot will enter its default operational mode.
-\item Monitor the output via USART for debug messages and status reports.
-\end{DoxyEnumerate}\hypertarget{md_readme_autotoc_md22}{}\doxysubsection{Commands}\label{md_readme_autotoc_md22}
-
+\end{DoxyEnumerate}\hypertarget{md_readme_autotoc_md19}{}\doxysubsection{Configuration}\label{md_readme_autotoc_md19}
+Configure your hardware setup and microcontroller settings in {\ttfamily \mbox{\hyperlink{config_8h_source}{config.\+h}}} as required to match your specific hardware.\hypertarget{md_readme_autotoc_md20}{}\doxysection{Usage}\label{md_readme_autotoc_md20}
+After the firmware is successfully flashed\+:
 \begin{DoxyItemize}
-\item {\bfseries{Start\+:}} Command the robot to start its navigation routine.
-\item {\bfseries{Stop\+:}} Immediately halts all motor activity.
-\item {\bfseries{Reset\+:}} Manually reset the system via a connected interface or automatically through the watchdog timer setup.
-\end{DoxyItemize}\hypertarget{md_readme_autotoc_md23}{}\doxysection{Contributing}\label{md_readme_autotoc_md23}
-Contributions to this project are welcome. Please fork the repository and submit pull requests with your suggested changes.\hypertarget{md_readme_autotoc_md24}{}\doxysection{License}\label{md_readme_autotoc_md24}
-This project is licensed under the MIT License -\/ see the LICENSE.md file for details.\hypertarget{md_readme_autotoc_md25}{}\doxysection{Authors}\label{md_readme_autotoc_md25}
-
+\item Place the robot at a designated start point on the track.
+\item Power on the robot.
+\item Connect to the robot via Bluetooth and open a serial connection using Cutecom or a similar program.
+\item Send commands to control the robot as specified\+:
 \begin{DoxyItemize}
-\item {\bfseries{Ziyi Liu}} -\/ {\itshape Initial work} -\/ \href{https://github.com/Ziyi-star}{\texttt{ Ziyi-\/star}}
-\end{DoxyItemize}\hypertarget{md_readme_autotoc_md26}{}\doxysection{Acknowledgments}\label{md_readme_autotoc_md26}
-
-\begin{DoxyItemize}
-\item Hat tip to anyone whose code was used
-\item Inspiration
-\item etc.
+\item {\bfseries{S\+:}} Start navigation.
+\item {\bfseries{P\+:}} Pause/resume navigation.
+\item {\bfseries{T\+:}} Test rotation functionality.
 \end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_readme_autotoc_md21}{}\doxysection{Documentation}\label{md_readme_autotoc_md21}
+Documentation is generated using Doxygen in HTML format. To generate the documentation\+:
 
-\DoxyHorRuler{0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make documentation}
+
+\end{DoxyCode}
 
 
-This README is customizable and can be expanded based on further details of your project or specific requirements you might want to highlight. Adjust the sections according to what your actual project setup demands or includes. 
+Ensure you do not submit the generated documentation folder. It should be generated after cloning the repository using the above command.\hypertarget{md_readme_autotoc_md22}{}\doxysection{Contributing}\label{md_readme_autotoc_md22}
+Individual contributions are welcome. Please fork the repository and submit pull requests for any enhancements.\hypertarget{md_readme_autotoc_md23}{}\doxysection{Authors}\label{md_readme_autotoc_md23}
+
+\begin{DoxyItemize}
+\item {\bfseries{\href{https://github.com/Ziyi-star/autonomous_robot.git}{\texttt{ Ziyi Liu}}}} -\/ Initial work and ongoing maintenance
+\end{DoxyItemize}\hypertarget{md_readme_autotoc_md24}{}\doxysection{License}\label{md_readme_autotoc_md24}
+This project is licensed under the MIT License -\/ see the LICENSE.\+md file for details.\hypertarget{md_readme_autotoc_md25}{}\doxysection{Acknowledgments}\label{md_readme_autotoc_md25}
+
+\begin{DoxyItemize}
+\item Prof. Dr. B. Sick for project requirements.
+\item Benjamin Herwig and all tutors for their guidance, support and assistance. 
+\end{DoxyItemize}

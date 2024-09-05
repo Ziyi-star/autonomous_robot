@@ -10,7 +10,7 @@
  */
 
 
-#include "global_variables.h"
+#include "config.h"
 
 //for timer
 uint16_t cnt = 0;

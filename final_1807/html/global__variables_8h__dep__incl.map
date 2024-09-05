@@ -1,8 +1,0 @@
-<map id="inc/global_variables.h" name="inc/global_variables.h">
-<area shape="rect" id="node1" title="Global variables for timing and race management." alt="" coords="45,5,209,32"/>
-<area shape="rect" id="node2" href="$clk_8h.html" title="Timer and Clock Management for Microcontroller." alt="" coords="89,80,165,107"/>
-<area shape="rect" id="node3" href="$main_8h.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="5,155,96,181"/>
-<area shape="rect" id="node6" href="$global__variables_8c.html" title="Global variables for timing and race control." alt="" coords="189,80,352,107"/>
-<area shape="rect" id="node5" href="$clk_8c.html" title="Timer and Clock Management for Microcontroller." alt="" coords="120,155,195,181"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="6,229,95,256"/>
-</map>

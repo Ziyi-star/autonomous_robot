@@ -1,6 +1,6 @@
 /**
  * @file led.c
- * @author Ziyi LIu
+ * @author Ziyi Liu
  * @date 04.09.2024
  * @brief LED Control for Robotic Shift Register Interface
  *

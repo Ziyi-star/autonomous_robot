@@ -1,6 +1,6 @@
 /**
  * @file main.h
- * @author Ziyi LIu
+ * @author Ziyi Liu
  * @date 04.09.2024
  *
  * @brief Main Control Loop for Autonomous Robotic Navigation
@@ -22,4 +22,4 @@
 #include "track.h"
 #include "iesusart.h"
 #include "iesadc.h"
-#include "global_variables.h"
+#include "config.h"

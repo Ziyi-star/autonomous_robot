@@ -1,9 +1,0 @@
-<map id="inc/track.h" name="inc/track.h">
-<area shape="rect" id="node1" title="Motor control definitions and functions for robotic movements." alt="" coords="175,5,265,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="217,155,287,181"/>
-<area shape="rect" id="node3" href="$iesusart_8h.html" title="Basic serial communication via USART for ATMEGA328." alt="" coords="137,80,223,107"/>
-<area shape="rect" id="node4" href="$iesmotors_8h_source.html" title=" " alt="" coords="13,80,112,107"/>
-<area shape="rect" id="node6" href="$iesadc_8h_source.html" title=" " alt="" coords="299,80,375,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,155,120,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="312,155,379,181"/>
-</map>
