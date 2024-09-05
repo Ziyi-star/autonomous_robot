@@ -138,6 +138,25 @@ void rotate_clockwise() {
     PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
 }
 
+// Schnelle Drehung im Uhrzeigersinn, right
+void rotate_clockwise_oppsite() {
+    // Set the duty cycles for maximum differential speed
+    //links
+    setDutyCycle(PD5, 0);  // Maximum speed forward for left motors
+    //rechts
+    setDutyCycle(PD6, 255);    // Stop right motors or set to 0 for minimum speed if reverse not desired
+    // links  FORWARD, 1
+    PORTD &= ~(1 << PIN_IN1_FORWARD_LEFT);
+    // links BACKWARD 1
+    PORTB &= ~(1 << PIN_IN2_BACKWARD_LEFT);
+    // RIGHT FORWARD 1
+    PORTB |= (1 << PIN_IN4_FORWARD_RIGHT);
+    // Right BACKWARD 0
+    PORTB &= ~(1 << PIN_IN3_BACKWARD_RIGHT);
+}
+
+
+
 
 
 

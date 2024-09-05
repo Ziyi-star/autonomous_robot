@@ -64,8 +64,6 @@ void stop();
  */
 void rotate_clockwise();
 
-
 #endif
-
 
 
