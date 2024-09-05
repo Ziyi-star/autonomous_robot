@@ -1,0 +1,61 @@
+\hypertarget{clk_8h}{}\doxysection{inc/clk.h File Reference}
+\label{clk_8h}\index{inc/clk.h@{inc/clk.h}}
+
+
+Timer and Clock Management for Microcontroller.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for clk.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clk_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{clk_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{clk_8h_ac6a1493acbd5800cc73bc94f0d47307a}\label{clk_8h_ac6a1493acbd5800cc73bc94f0d47307a}} 
+\#define {\bfseries OR\+\_\+\+HEARTBEAT}~PORTB
+\item 
+\mbox{\Hypertarget{clk_8h_a4342db3368abe430fe518650ede79576}\label{clk_8h_a4342db3368abe430fe518650ede79576}} 
+\#define {\bfseries OP\+\_\+\+HEARTBEAT}~PB5
+\item 
+\mbox{\Hypertarget{clk_8h_ab7cfd411d6c50f0116dcfbfebd6ed4ed}\label{clk_8h_ab7cfd411d6c50f0116dcfbfebd6ed4ed}} 
+\#define {\bfseries DR\+\_\+\+HEARTBEAT}~DDRB
+\item 
+\mbox{\Hypertarget{clk_8h_af1b0a585cc3426bb4c4c23161377fb5d}\label{clk_8h_af1b0a585cc3426bb4c4c23161377fb5d}} 
+\#define {\bfseries DP\+\_\+\+HEARTBEAT}~DDB5
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{clk_8h_af62b96e51e7ef185251ef0cd6357f9f5}\label{clk_8h_af62b96e51e7ef185251ef0cd6357f9f5}} 
+void {\bfseries setup\+\_\+heartbeat\+\_\+timer} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Timer and Clock Management for Microcontroller. 
+
+\begin{DoxyAuthor}{Author}
+Ziyi Liu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+09.\+2024
+\end{DoxyDate}
+This header file contains definitions and functions for managing timers and clocks on AVR microcontrollers. It provides macros for port and pin definitions used in heartbeat signaling and includes essential AVR libraries to access hardware features. The setup\+\_\+heartbeat\+\_\+timer function declared in this file configures a timer used for generating periodic interrupts to toggle an LED as a heartbeat indicator, which helps in monitoring the system\textquotesingle{}s health. 

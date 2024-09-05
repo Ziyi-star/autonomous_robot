@@ -1,0 +1,75 @@
+\label{index_md_mainpage}%
+\Hypertarget{index_md_mainpage}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{Project Overview}\label{index_autotoc_md1}
+This repository contains all the necessary software for controlling an autonomous line-\/following robot designed as part of the Embedded Systems Laboratory at Universität Kassel under the supervision of Herr Benjamin Herwig. The robot is programmed to navigate a line track for three rounds and perform various tasks as dictated by the project requirements.\hypertarget{index_autotoc_md2}{}\doxysubsection{Features}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Navigates a predefined line track for three consecutive rounds.
+\item Uses line-\/following sensors to stay on track.
+\item Communicates its status and actions via USART.
+\item Capable of pausing, resuming navigation and Rotation based on commands.
+\item Implements a watchdog timer for automatic reset after completing its tasks.
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{Getting Started}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{Prerequisites}\label{index_autotoc_md4}
+
+\begin{DoxyItemize}
+\item AVR-\/\+GCC compiler for building the project.
+\item AVRDUDE or a similar tool for flashing the firmware to the microcontroller.
+\item An AVR microcontroller ATmega328/P, set up with necessary peripherals (motors, sensors, etc.).
+\end{DoxyItemize}\hypertarget{index_autotoc_md5}{}\doxysubsection{Installation}\label{index_autotoc_md5}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Clone the Repository\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/Ziyi-\/star/autonomous\_robot.git}
+\DoxyCodeLine{cd autonomous-\/robot}
+
+\end{DoxyCode}
+
+\item {\bfseries{Compile the Source Code\+:}} Using the provided Makefile, compile the source code\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make all}
+
+\end{DoxyCode}
+
+\item {\bfseries{Flash the Firmware\+:}} Load the compiled firmware onto the microcontroller\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make flash}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md6}{}\doxysubsection{Configuration}\label{index_autotoc_md6}
+Configure your hardware setup and microcontroller settings in {\ttfamily \mbox{\hyperlink{config_8h_source}{config.\+h}}} as required to match your specific hardware.\hypertarget{index_autotoc_md7}{}\doxysection{Usage}\label{index_autotoc_md7}
+After the firmware is successfully flashed\+:
+\begin{DoxyItemize}
+\item Place the robot at a designated start point on the track.
+\item Power on the robot.
+\item Connect to the robot via Bluetooth and open a serial connection using Cutecom or a similar program.
+\item Send commands to control the robot as specified\+:
+\begin{DoxyItemize}
+\item {\bfseries{S\+:}} Start navigation.
+\item {\bfseries{P\+:}} Pause/resume navigation.
+\item {\bfseries{T\+:}} Test rotation functionality.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md8}{}\doxysection{Documentation}\label{index_autotoc_md8}
+Documentation is generated using Doxygen in HTML format. To generate the documentation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make doc}
+
+\end{DoxyCode}
+
+
+Ensure you do not submit the generated documentation folder. It should be generated after cloning the repository using the above command.\hypertarget{index_autotoc_md9}{}\doxysection{Contributing}\label{index_autotoc_md9}
+Individual contributions are welcome. Please fork the repository and submit pull requests for any enhancements.\hypertarget{index_autotoc_md10}{}\doxysection{Authors}\label{index_autotoc_md10}
+
+\begin{DoxyItemize}
+\item {\bfseries{\href{https://github.com/Ziyi-star/autonomous_robot.git}{\texttt{ Ziyi Liu}}}} -\/ Initial work and ongoing maintenance
+\end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysection{License}\label{index_autotoc_md11}
+This project is licensed under the MIT License -\/ see the LICENSE.\+md file for details.\hypertarget{index_autotoc_md12}{}\doxysection{Acknowledgments}\label{index_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Prof. Dr. B. Sick for project requirements.
+\item Benjamin Herwig and all tutors for their guidance, support and assistance. 
+\end{DoxyItemize}

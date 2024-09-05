@@ -1,0 +1,97 @@
+\hypertarget{global__variables_8c}{}\doxysection{src/global\+\_\+variables.c File Reference}
+\label{global__variables_8c}\index{src/global\_variables.c@{src/global\_variables.c}}
+
+
+Global variables for timing and race control.  
+
+
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for global\+\_\+variables.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{global__variables_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{global__variables_8c_ae1d905c6ac1a0c9b96dca16153917334}{cnt}} = 0
+\item 
+uint16\+\_\+t \mbox{\hyperlink{global__variables_8c_a3e99a2ec44cbad2e05795e5318622cdb}{m\+\_\+second}} = 0
+\item 
+char \mbox{\hyperlink{global__variables_8c_aa4fd1fb25e9579b6c2447c2753362ad9}{centi\+\_\+second}} = 0
+\item 
+char \mbox{\hyperlink{global__variables_8c_a0d4c0909f9c1c6dcf034b6cb0bbcb6a5}{half\+\_\+second}} = 0
+\item 
+char \mbox{\hyperlink{global__variables_8c_abcf2f7896412b447806076eb99410184}{second}} = 0
+\item 
+int \mbox{\hyperlink{global__variables_8c_a85f3d475f706aee6185609a7a11e4f4b}{current\+Lap}} = 1
+\item 
+uint16\+\_\+t \mbox{\hyperlink{global__variables_8c_a0b0abc9af6cfb029bdf2c7ba718c1a99}{time\+\_\+counter}} = 0
+\item 
+char \mbox{\hyperlink{global__variables_8c_a6190b0bc2f0c2018ae6698ddd4962dbf}{count\+\_\+time}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Global variables for timing and race control. 
+
+\begin{DoxyAuthor}{Author}
+Ziyi Liu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+09.\+2024
+\end{DoxyDate}
+This file defines global variables used across the project for managing timing functions and race state in a robotic navigation system. These variables facilitate synchronization and state management throughout various components of the system. 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{global__variables_8c_aa4fd1fb25e9579b6c2447c2753362ad9}\label{global__variables_8c_aa4fd1fb25e9579b6c2447c2753362ad9}} 
+\index{global\_variables.c@{global\_variables.c}!centi\_second@{centi\_second}}
+\index{centi\_second@{centi\_second}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{centi\_second}{centi\_second}}
+{\footnotesize\ttfamily char centi\+\_\+second = 0}
+
+Centiseconds counter. \mbox{\Hypertarget{global__variables_8c_ae1d905c6ac1a0c9b96dca16153917334}\label{global__variables_8c_ae1d905c6ac1a0c9b96dca16153917334}} 
+\index{global\_variables.c@{global\_variables.c}!cnt@{cnt}}
+\index{cnt@{cnt}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{cnt}{cnt}}
+{\footnotesize\ttfamily uint16\+\_\+t cnt = 0}
+
+Counter for low-\/level timing operations. \mbox{\Hypertarget{global__variables_8c_a6190b0bc2f0c2018ae6698ddd4962dbf}\label{global__variables_8c_a6190b0bc2f0c2018ae6698ddd4962dbf}} 
+\index{global\_variables.c@{global\_variables.c}!count\_time@{count\_time}}
+\index{count\_time@{count\_time}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{count\_time}{count\_time}}
+{\footnotesize\ttfamily char count\+\_\+time = 0}
+
+Flag to indicate whether to count time or not. \mbox{\Hypertarget{global__variables_8c_a85f3d475f706aee6185609a7a11e4f4b}\label{global__variables_8c_a85f3d475f706aee6185609a7a11e4f4b}} 
+\index{global\_variables.c@{global\_variables.c}!currentLap@{currentLap}}
+\index{currentLap@{currentLap}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{currentLap}{currentLap}}
+{\footnotesize\ttfamily int current\+Lap = 1}
+
+Current lap number in the race. \mbox{\Hypertarget{global__variables_8c_a0d4c0909f9c1c6dcf034b6cb0bbcb6a5}\label{global__variables_8c_a0d4c0909f9c1c6dcf034b6cb0bbcb6a5}} 
+\index{global\_variables.c@{global\_variables.c}!half\_second@{half\_second}}
+\index{half\_second@{half\_second}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{half\_second}{half\_second}}
+{\footnotesize\ttfamily char half\+\_\+second = 0}
+
+Half-\/second flag, set every half second. \mbox{\Hypertarget{global__variables_8c_a3e99a2ec44cbad2e05795e5318622cdb}\label{global__variables_8c_a3e99a2ec44cbad2e05795e5318622cdb}} 
+\index{global\_variables.c@{global\_variables.c}!m\_second@{m\_second}}
+\index{m\_second@{m\_second}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{m\_second}{m\_second}}
+{\footnotesize\ttfamily uint16\+\_\+t m\+\_\+second = 0}
+
+Milliseconds counter. \mbox{\Hypertarget{global__variables_8c_abcf2f7896412b447806076eb99410184}\label{global__variables_8c_abcf2f7896412b447806076eb99410184}} 
+\index{global\_variables.c@{global\_variables.c}!second@{second}}
+\index{second@{second}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{second}{second}}
+{\footnotesize\ttfamily char second = 0}
+
+Second flag, set every second. \mbox{\Hypertarget{global__variables_8c_a0b0abc9af6cfb029bdf2c7ba718c1a99}\label{global__variables_8c_a0b0abc9af6cfb029bdf2c7ba718c1a99}} 
+\index{global\_variables.c@{global\_variables.c}!time\_counter@{time\_counter}}
+\index{time\_counter@{time\_counter}!global\_variables.c@{global\_variables.c}}
+\doxysubsubsection{\texorpdfstring{time\_counter}{time\_counter}}
+{\footnotesize\ttfamily uint16\+\_\+t time\+\_\+counter = 0}
+
+Generic time counter for various uses. 

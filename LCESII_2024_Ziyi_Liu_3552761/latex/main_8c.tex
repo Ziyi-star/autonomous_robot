@@ -1,0 +1,44 @@
+\hypertarget{main_8c}{}\doxysection{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Main Control Loop for Autonomous Robotic Navigation.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structADCValues}{ADCValues}}
+\begin{DoxyCompactList}\small\item\em Holds ADC (Analog-\/to-\/\+Digital Converter) values from multiple channels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a36c7cfb693f30330c0ef4d87e68a915e}\label{main_8c_a36c7cfb693f30330c0ef4d87e68a915e}} 
+\mbox{\hyperlink{structADCValues}{ADCValues}} {\bfseries initial\+Adc\+Values}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main Control Loop for Autonomous Robotic Navigation. 
+
+\begin{DoxyAuthor}{Author}
+Ziyi Liu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+09.\+2024
+\end{DoxyDate}
+This file contains the main function which serves as the central control hub for an autonomous robot. It integrates sensor data processing, state management, and command execution to handle different operational modes such as navigation, obstacle detection, and system diagnostics. The robot\textquotesingle{}s behavior is influenced by ADC values to dynamically adjust its course and by UART messages to switch between different operational states. 

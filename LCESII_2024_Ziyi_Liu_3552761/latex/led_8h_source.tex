@@ -1,0 +1,69 @@
+\hypertarget{led_8h_source}{}\doxysection{led.\+h}
+\label{led_8h_source}\index{inc/led.h@{inc/led.h}}
+\mbox{\hyperlink{led_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef LED\_h}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define LED\_h}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <avr/io.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <util/delay.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{iesusart_8h}{iesusart.h}}"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// Robot function/peripheral RIGHT LF.}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define DR\_LF\_R DDRC}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define DP\_LF\_R DDC0}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define IR\_LF\_R PINC}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define IP\_LF\_R PINC0}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// Robot function/peripheral MIDDLE LF.}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define DR\_LF\_M DDRC}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define DP\_LF\_M DDC1}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define IR\_LF\_M PINC}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define IP\_LF\_M PINC1}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Robot function/peripheral LEFT LF.}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define DR\_LF\_L DDRC}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define DP\_LF\_L DDC2}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define IR\_LF\_L PINC}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define IP\_LF\_L PINC2}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// Robot funktion/peripheral SR}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define REGWIDTH 3}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{// SR clock}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define DR\_SR\_CLK  DDRD}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define DP\_SR\_CLK  DDD4}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define OR\_SR\_CLK  PORTD}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define OP\_SR\_CLK  PORTD4}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// SR data}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define DR\_SR\_DATA DDRB}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define DP\_SR\_DATA DDB2}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define OR\_SR\_DATA PORTB}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define OP\_SR\_DATA PORTB2}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define SR\_LED\_YELLOW 2}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define SR\_LED\_GREEN  1}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define SR\_LED\_BLUE   0}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} srr\_t;}
+\DoxyCodeLine{59 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} cntv8\_t;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_aed430d4241a041f1420ab77216321e67}{clk}}();}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_a8e84afaa424343551f99b9ef4bc8217f}{update\_hardware}}(srr\_t *regmdl);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_ac82a5465fec9f1113025a5940f065a6b}{update\_model}}(srr\_t *regmdl, \textcolor{keywordtype}{int} left, \textcolor{keywordtype}{int} middle, \textcolor{keywordtype}{int} right);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_a92d6c5bd8b88ef6f17a5430702563a47}{clear}}(srr\_t *regmdl);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_a550789104d08d91d49ba3c43fc08682a}{setup\_ddr\_all}}();}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{76 \textcolor{keywordtype}{void} \mbox{\hyperlink{led_8h_ad92e1d65a1d3b552cc1553efe00d815b}{run\_led\_sequence}}(srr\_t *regmdl);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

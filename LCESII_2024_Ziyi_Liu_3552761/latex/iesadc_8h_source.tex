@@ -1,0 +1,47 @@
+\hypertarget{iesadc_8h_source}{}\doxysection{iesadc.\+h}
+\label{iesadc_8h_source}\index{inc/iesadc.h@{inc/iesadc.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IES\_ADC\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IES\_ADC\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define DR\_ADC0 DDRC}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define DP\_ADC0 DDC0}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define IR\_ADC0 PC0}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define IP\_ADC0 PC0}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DR\_ADC1 DDRC}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define DP\_ADC1 DDC1}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define IR\_ADC1 PC1}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define IP\_ADC1 PC1}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <avr/io.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define DR\_ADC2 DDRC}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define DP\_ADC2 DDC2}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define IR\_ADC2 PC2}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define IP\_ADC2 PC2}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// The following constants reflect table 23-\/4 of the ATMega328p-\/data-\/}}
+\DoxyCodeLine{23 \textcolor{comment}{// sheet. These constants}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ADMUX\_CHN\_ADC0 0 }\textcolor{comment}{// 0000 0000}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define ADMUX\_CHN\_ADC1 1 }\textcolor{comment}{// 0000 0001}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define ADMUX\_CHN\_ADC2 2 }\textcolor{comment}{// 0000 0010}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define ADMUX\_CHN\_ADC3 3 }\textcolor{comment}{// 0000 0011}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define ADMUX\_CHN\_ALL 7 }\textcolor{comment}{// 0000 1111}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// Average some measurements to reduce probable noise.}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define ADC\_AVG\_WINDOW 20}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Well hmmm understand this by yourself. Become inspired.}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define ADCMSG "{}ADC0: \%5u\(\backslash\)tADC1: \%5u\(\backslash\)tADC2: \%5u\(\backslash\)n"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 uint16\_t ADC\_read(uint8\_t channel);}
+\DoxyCodeLine{37 \textcolor{keywordtype}{void} ADC\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{38 uint16\_t ADC\_read\_avg(uint8\_t channel, uint8\_t nsamples) ;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
