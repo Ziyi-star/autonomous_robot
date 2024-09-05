@@ -1,0 +1,7 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "global_variables.h": "c",
+        "wdt.h": "c"
+    }
+}
