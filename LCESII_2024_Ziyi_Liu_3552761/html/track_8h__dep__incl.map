@@ -1,6 +1,0 @@
-<map id="inc/track.h" name="inc/track.h">
-<area shape="rect" id="node1" title="Motor control definitions and functions for robotic movements." alt="" coords="63,5,153,32"/>
-<area shape="rect" id="node2" href="$main_8h.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="5,80,96,107"/>
-<area shape="rect" id="node4" href="$track_8c.html" title="Motor Control Functions for Robotic Navigation." alt="" coords="121,80,210,107"/>
-<area shape="rect" id="node3" href="$main_8c.html" title="Main Control Loop for Autonomous Robotic Navigation." alt="" coords="6,155,95,181"/>
-</map>
