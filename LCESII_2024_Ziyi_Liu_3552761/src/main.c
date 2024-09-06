@@ -52,7 +52,7 @@ int main(void) {
    
     USART_init(UBRR_SETTING);
     
-	// ADC zu lesen 
+	// read ADC 
     DR_ADC0 &= ~(1 << DP_ADC0);
     DR_ADC1 &= ~(1 << DP_ADC1);
     DR_ADC2 &= ~(1 << DP_ADC2);
@@ -102,7 +102,7 @@ int main(void) {
         
         update_model(regmdl, left, middle, right);
 		
-		//Um Buchstaben zu handeln
+		//Handle letters
 		//STARTFIELD
 		if(message == 'S' && left && middle && right && state != 'S'){
 			//einmalig Mode ändern zu 'S'
@@ -110,7 +110,7 @@ int main(void) {
 			USART_print("Here I am once more, going down the only round I've ever known...\n"); 
 			count_time = 1;
 		} 
-		//'P' gedrückt
+		//Press 'P'
 		if(message == 'P'){
 			if(state == 'P'){
 				state = 'S';
@@ -120,17 +120,17 @@ int main(void) {
 			}
 		
 		} 
-		//'T' gedrückt
+		//Press 'T' 
 		if(message == 'T'){
-			// vorher fahren 'S' mode, dann wechsel zu trabble 'T' mode
+			// First ride 'S' mode, then switch to trabble 'T' mode
 			if(state == 'S'){
 				state = 'T';
 			}
 		
 		} 
-		// 'H' gedrückt
+		// Press 'H'
 		if(message == 'H'){
-			// vorher trabble 'T' mode, 
+			// First trabble 'T' mode, and switch to 'H' mode
 			if(state == 'T'){
 				state = 'H';
 			}
@@ -151,7 +151,7 @@ int main(void) {
             last_model_state = *regmdl;
         }
 
-		// Fahren 'S' mode 
+		// Ride 'S' mode 
         if (state == 'S'){
 			//run logic
 			if (middle) {
@@ -165,7 +165,7 @@ int main(void) {
 				small_left();
 
 			}
-			//um die Ecke
+			//At the corner
 			else if (!left && !middle && !right) {
 				if (last_right){
 					big_right();
@@ -174,9 +174,9 @@ int main(void) {
 					big_left();
 					}
 				}
-			//startfield
+			//Startfield
 			if (left && middle && right){
-				//if schwellwert dann hochzählen
+				//If threshold then increment
 				if (!start){
 					start = m_second;
 					}
@@ -190,7 +190,7 @@ int main(void) {
 					USART_print("YEAH YEAH, done 2nd lap, feeling proud, going for lap 3/3\n"); 
 					}
 					if (currentLap == 4) {
-						//TODO: reset?
+						//reset
 						sprintf(str_buffer, " Finally finished , It's over and done now, after #%d seconds. Thanks for working with me! :-) I will reset myself in 5 seconds. Take care!\n", time_counter);
 						USART_print(str_buffer);
 						stop();
@@ -261,7 +261,6 @@ int main(void) {
 				currentAdc0 = ADC_read_avg(ADMUX_CHN_ADC0, ADC_AVG_WINDOW);
 				currentAdc1 = ADC_read_avg(ADMUX_CHN_ADC1, ADC_AVG_WINDOW);
 				currentAdc2 = ADC_read_avg(ADMUX_CHN_ADC2, ADC_AVG_WINDOW);
-
 				// Rotate for the duration specified
 				int duration_ms = 10;
 				while (duration_ms > 0) {

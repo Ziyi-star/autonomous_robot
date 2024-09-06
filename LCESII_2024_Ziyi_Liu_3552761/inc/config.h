@@ -1,7 +1,7 @@
 /**
  * @author Ziyi Liu
  * @date 04.09.2024
- * @file global_variables.h
+ * @file config.h
  * @brief Global variables for timing and race management.
  *
  * @details This header file declares external global variables used across multiple modules for handling
